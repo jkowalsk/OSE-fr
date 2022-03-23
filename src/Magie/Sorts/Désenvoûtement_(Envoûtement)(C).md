@@ -1,0 +1,28 @@
+# Désenvoûtement (Envoûtement)(C)
+
+
+*[Sorts de clerc](../Sorts_de_clerc.md) 3e Niveau*
+
+**Durée :** Instantanée / Permanente (envoûtement)
+
+**Portée :** Le lanceur ou une créature touchée
+
+Désenvoûtement ôte instantanément l’envoûtement d’une créature. Ce sort
+peut permettre à un personnage de se débarrasser d’un objet magique
+maudit.
+
+## Inversé : Envoûtement
+
+Place un effet nocif sur une créature, si elle rate son jet de
+sauvegarde contre les sorts.
+
+  - **Effets :** La forme exacte et les effets de l’envoûtement sont
+    déterminés par le lanceur.
+  - **Effets les plus graves possibles :** Un malus de –2 aux jets de
+    sauvegarde, de –4 aux jets d’attaque, réduction d’une
+    caractéristique de 50 %.
+  - **Envoûtements multiples :** Peuvent affecter une créature tant que
+    les effets de ces envoûtements sont différents.
+  - **Décision de l’arbitre :** L’arbitre doit décider des effets de ce
+    sort et peut retourner les envoûtements trop puissants sur le
+    lanceur \!

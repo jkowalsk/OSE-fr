@@ -1,0 +1,34 @@
+[book]
+authors = ["Necrotic Gnome"]
+language = "fr"
+multilingual = false
+src = "src"
+
+[build]
+create-missing = false
+
+#use as mdbook preprocessor
+#[preprocessor.auto-gen-summary]
+#first-line-as-link-text = true # indicate mdbook to make the first line(default the file name) of markdown file as the link text in SUMMARY.md 
+
+
+[output.linkcheck]
+warning-policy = "ignore" # too much false positive
+
+[output.html.fold]
+enable = true
+level = 0
+
+[output.html]
+theme = "theme"
+default-theme = "ose"
+additional-css = ["theme/style.css"]
+additional-js = ["theme/sidebar.js"]
+
+[output.html.search]
+enable = true
+
+
+#[preprocessor.toc]
+#command = "mdbook-toc"
+#renderer = ["html"]
