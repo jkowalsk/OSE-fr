@@ -125,8 +125,8 @@ pub struct Nombre {
 impl Nombre {
     pub fn from(val: &str) -> Self {
         let vals: Vec<String> = val.split("(").map(|x| x.to_string()).collect();
-        let donjon = vals[0].clone();
-        let exterieur = vals[1].clone().trim().into();
+        let donjon = vals[0].trim().into();
+        let exterieur = vals[1].trim().into();
         Nombre { donjon, exterieur }
     }
 }

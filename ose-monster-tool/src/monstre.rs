@@ -91,6 +91,44 @@ impl Monstre {
 
         Ok(res)
     }
+
+    pub fn to_tex<P>(&self, out: &mut P) -> io::Result<()>  where P: io::Write {
+        writeln!(out, "\\begin{{monster}}")?;
+        writeln!(out, "\\monstercarac{{name}}{{{}}}", self.nom)?;
+        
+        writeln!(out, "\\monstercarac{{description}}{{")?;
+        for desc in &self.description {
+            writeln!(out, "  {}", desc)?;
+        }
+        writeln!(out, "}}")?;
+        
+        for detail in &self.details {
+            writeln!(out, "\\monsterdetail{{{}}}{{{}}}", detail.nom, detail.description)?;
+        }
+
+        writeln!(out, "\\monstercarac{{ca}}{{{}}}", self.stats.ca.0)?;
+        writeln!(out, "\\monstercarac{{hd}}{{{}}}", self.stats.hd.0)?;
+        writeln!(out, "\\monstercarac{{taco}}{{{}}}", self.stats.taco.0)?;
+        writeln!(out, "\\monstercarac{{moral}}{{{}}}", self.stats.moral.0)?;
+        writeln!(out, "\\monstercarac{{alignement}}{{{}}}", self.stats.alignement.0)?;
+        writeln!(out, "\\monstercarac{{xp}}{{{}}}", self.stats.xp.0)?;
+        writeln!(out, "\\monstercarac{{nombre_donjon}}{{{}}}", self.stats.nombre.donjon)?;
+        writeln!(out, "\\monstercarac{{nombre_exterieur}}{{{}}}", self.stats.nombre.exterieur)?;
+        writeln!(out, "\\monstercarac{{tresor}}{{{}}}", self.stats.tresor.0)?;
+
+        writeln!(out, "\\monstercarac{{save_mort_poison}}{{{}}}", self.stats.sauvegarde.mort_poison)?;
+        writeln!(out, "\\monstercarac{{save_baguettes}}{{{}}}", self.stats.sauvegarde.baguettes)?;
+        writeln!(out, "\\monstercarac{{save_paralysie_petrification}}{{{}}}", self.stats.sauvegarde.paralysie_petrification)?;
+        writeln!(out, "\\monstercarac{{save_souffles}}{{{}}}", self.stats.sauvegarde.souffles)?;
+        writeln!(out, "\\monstercarac{{save_sorts_sceptres_batons}}{{{}}}", self.stats.sauvegarde.sorts_sceptres_batons)?;
+
+        for attack in &self.stats.attacks.0 {
+            writeln!(out, "\\monsterattack{{{}}}{{{}}}", attack.description, attack.effet)?;
+        }
+
+        writeln!(out, "\\end{{monster}}")?;
+        Ok(())
+    }
 }
 
 mod test {
@@ -116,9 +154,9 @@ mod test {
     #[test]
     fn monster_from_file2() -> std::io::Result<()> {
         let monsters = super::Monstre::from_md("../src/Monstres/liste/Basilic.md")?;
-
+        let mut stdout = std::io::stdout();
         for monstre in monsters {
-            println!("{:?}\n", monstre);
+            monstre.to_tex(&mut stdout).unwrap();
         }
         Ok(())
     }
