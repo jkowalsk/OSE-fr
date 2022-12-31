@@ -11,10 +11,10 @@ create-missing = false
 #[preprocessor.auto-gen-summary]
 #first-line-as-link-text = true # indicate mdbook to make the first line(default the file name) of markdown file as the link text in SUMMARY.md 
 
-[output.latex]
-latex = true
-pdf = false
-markdown = true
+#[output.latex]
+#latex = true
+#pdf = false
+#markdown = true
 
 #[output.linkcheck]
 #warning-policy = "ignore" # too much false positive

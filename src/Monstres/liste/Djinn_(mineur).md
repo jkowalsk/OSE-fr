@@ -10,7 +10,7 @@
 | ------------------- | ---------------------------- |
 | Classe d'armure     | 5 \[14\]                     |
 | Dés de vie          | 7+1\* (32 pv)                |
-| Attaques            | 1 × poings (2d8), magie      |
+| Attaques            | 1 × poings (2d8), magie (-)  |
 | TAC0                | 12 \[+7\]                    |
 | Déplacement         | 27 m (9 m) / 72 m (24 m) vol |
 | Jets de sauvegarde  | MP 4 B 5 PP 6 S 5 SSB 8 (14) |

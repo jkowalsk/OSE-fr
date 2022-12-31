@@ -3,6 +3,8 @@
 use crate::stats::*;
 use std::fs::File;
 use std::io::{self, BufRead};
+use std::path::Path;
+use crate::markdown_helper::markdown_to_tex;
 
 #[derive(Default, Clone, Debug)]
 pub struct Details {
@@ -18,7 +20,11 @@ impl Details {
         nom.pop();
         Details {
             nom,
-            description: vals[2][1..].to_string(),
+            description: if vals[2].len() < 1 {
+                String::new()
+            } else {
+                vals[2][1..].to_string()
+            }
         }
     }
 }
@@ -32,7 +38,8 @@ pub struct Monstre {
 }
 
 impl Monstre {
-    pub fn from_md(path: &str) -> io::Result<Vec<Monstre>> {
+    pub fn from_md<P>(path: P) -> io::Result<Vec<Monstre>> 
+    where P: AsRef<Path> {
         let file = File::open(path)?;
         let mut res = Vec::new();
 
@@ -49,7 +56,7 @@ impl Monstre {
                 res.push(Monstre::default());
                 let last = res.len() - 1;
                 current = &mut res[last];
-                current.nom = line[2..].to_string();
+                current.nom = line[2..].trim().to_string();
                 current.description = monster.description.clone();
                 current.details = monster.details.clone();
             } else if line.starts_with("*") {
@@ -67,6 +74,7 @@ impl Monstre {
             } else if line.starts_with("  - ") {
                 let mut detail = Details::from(line);
                 loop {
+                    detail.description.push_str("\n"); // keep new lines
                     let next = match lines.peek() {
                         Some(Ok(c)) => {
                             if c.starts_with("    ") {
@@ -98,12 +106,12 @@ impl Monstre {
         
         writeln!(out, "\\monstercarac{{description}}{{")?;
         for desc in &self.description {
-            writeln!(out, "  {}", desc)?;
+            writeln!(out, "  {}", markdown_to_tex(desc))?;
         }
         writeln!(out, "}}")?;
         
         for detail in &self.details {
-            writeln!(out, "\\monsterdetail{{{}}}{{{}}}", detail.nom, detail.description)?;
+            writeln!(out, "\\monsterdetail{{{}}}{{{}}}", detail.nom, markdown_to_tex(&detail.description))?;
         }
 
         writeln!(out, "\\monstercarac{{ca}}{{{}}}", self.stats.ca.0)?;
@@ -143,7 +151,7 @@ mod test {
 
     #[test]
     fn monster_from_file() -> std::io::Result<()> {
-        let monsters = super::Monstre::from_md("../src/Monstres/liste/Aigle.md")?;
+        let monsters = super::Monstre::from_md("../src/Monstres/liste/Vampire.md")?;
 
         for monstre in monsters {
             println!("{:?}\n", monstre);
@@ -157,6 +165,22 @@ mod test {
         let mut stdout = std::io::stdout();
         for monstre in monsters {
             monstre.to_tex(&mut stdout).unwrap();
+        }
+        Ok(())
+    }
+
+    #[test]
+    fn monster_to_tex() -> std::io::Result<()> {
+        let monsters = super::Monstre::from_md("../src/Monstres/liste/Vampire.md")?;
+        let mut stdout = std::io::stdout();
+        for monstre in monsters {
+            for detail in &monstre.details {
+                println!("-----");
+                println!("detail : {}", detail.nom);
+                println!("description : {}", detail.description);
+                println!("-----");
+            }
+          monstre.to_tex(&mut stdout).unwrap();
         }
         Ok(())
     }

@@ -71,7 +71,11 @@ impl Attaque {
     pub fn from(val: &str) -> Self {
         let vals: Vec<String> = val.split("(").map(|x| x.to_string()).collect();
         let description = vals[0].clone();
-        let effet = vals[1].clone().trim().into();
+        let effet = if vals.len() == 1 {
+            String::new()
+        } else {
+            vals[1].clone().trim().into()
+        };
         Attaque { description, effet }
     }
 }
@@ -102,7 +106,11 @@ impl Mouvement {
     pub fn from(val: &str) -> Self {
         let vals: Vec<String> = val.split("(").map(|x| x.to_string()).collect();
         let base = vals[0].clone();
-        let rencontre = vals[1].clone().trim().into();
+        let rencontre = if vals.len() == 1 {
+            String::new()
+        } else {
+            vals[1].clone().trim().into()
+        };
         Mouvement { base, rencontre }
     }
 }
@@ -126,7 +134,10 @@ impl Nombre {
     pub fn from(val: &str) -> Self {
         let vals: Vec<String> = val.split("(").map(|x| x.to_string()).collect();
         let donjon = vals[0].trim().into();
-        let exterieur = vals[1].trim().into();
+        let mut exterieur = vals[1].trim().to_string();
+        if exterieur.chars().last().unwrap() == ')' {
+            exterieur.pop();
+        }
         Nombre { donjon, exterieur }
     }
 }
