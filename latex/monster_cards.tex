@@ -1,0 +1,222 @@
+\documentclass[10pt]{report}
+\usepackage{vanilla}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+%\usepackage{amsmath}
+%\usepackage{amsfonts}
+%\usepackage{amssymb}
+%\usepackage{graphicx}
+%\usepackage[space]{grffile} % espace dans les noms de fichier image
+%\usepackage{wrapfig}
+%\usepackage{multirow}
+%\usepackage{float}
+%\usepackage{multicol}
+%\usepackage{hyperref}
+%\usepackage[most]{tcolorbox}
+\usepackage{xinttools}
+\usepackage{etoolbox}
+\usepackage{titletoc}
+\usepackage[percent]{overpic}
+\usepackage{adjustbox}
+
+\makeatletter
+
+\global\@namedef{monstercarac@list}{}
+\global\@namedef{monsterdetail@list}{}
+\global\@namedef{monsterdetailname@list}{}
+\global\@namedef{monsterattack@list}{}
+\global\@namedef{monsterattackname@list}{}
+
+\newcommand{\resetcaraclist}{
+	\xintFor* ##1 in \monstercarac@list\do {
+		\global\@namedef{##1}{}
+	}
+	\global\@namedef{monstercarac@list}{}
+}
+
+\newcommand{\resetdetaillist}{
+	\xintFor* ##1 in \monsterdetail@list\do {
+		\global\@namedef{##1}{}
+		\global\@namedef{name::##1}{}
+	}
+	\global\@namedef{monsterdetail@list}{}
+    \global\@namedef{monsterdetailname@list}{}
+}
+
+\newcommand{\resetattacklist}{
+	\xintFor* ##1 in \monsterattack@list\do {
+		\global\@namedef{##1}{}
+		\global\@namedef{name::##1}{}
+	}
+	\global\@namedef{monsterattack@list}{}
+	\global\@namedef{monsterattackname@list}{}
+}
+
+\newcommand{\monstercarac}[2]{
+	\global\@namedef{#1}{#2}
+	\g@addto@macro\monstercarac@list{{#1}}
+}
+
+\newcommand{\monsterdetail}[2]{
+	\global\@namedef{#1}{#2}
+	\global\@namedef{name::#1}{#1}
+	\g@addto@macro\monsterdetail@list{{#1}}
+    \g@addto@macro\monsterdetailname@list{{#1}}
+}
+
+\newcommand{\monsterattack}[2]{
+	\global\@namedef{#1}{#2}
+	\global\@namedef{name::#1}{#1}
+	\g@addto@macro\monsterattack@list{{#1}}
+	\g@addto@macro\monsterattackname@list{{#1}}
+}
+
+\newcommand{\printcarac}[2]{
+	#2 : \@nameuse{#1}
+}
+
+\newcommand{\teststring}[2]{% or \def\teststring#1#2{
+		\edef\@teststringA{#1}%
+		\edef\@teststringB{#2}%
+		\ifx\@teststringA\@teststringB
+		\expandafter\@firstoftwo
+		\else
+		\expandafter\@secondoftwo
+		\fi
+	}
+
+\setlength\columnsep{3mm} 
+\setlist[itemize]{leftmargin=*}
+\pagestyle{empty}
+
+\newcommand{\printmonster}{
+	\clearpage
+	
+	  %\begin{overpic}[abs,unit=1mm,width=\textwidth,grid,tics=5]{monstre.png}
+      \begin{overpic}[abs,unit=1mm,width=\textwidth,tics=5]{monstre.png}
+		\put (11,120) {{\makebox[50mm]{\centering\adjustbox{max width=50mm}{
+						\bfseries\Huge \@nameuse{name}}}}}
+		
+		\put (3, 100) {{\parbox{12mm}{\centering\bfseries \@nameuse{hd}}}}
+		\put (27, 100) {{\parbox[t]{20mm}{\centering\bfseries \@nameuse{alignement}}}}
+		\put (58, 100) {{\parbox{12mm}{\centering\bfseries \@nameuse{xp}}}}
+		
+		\put (5, 80) {{\parbox{8mm}{\centering\bfseries \@nameuse{ca}}}}
+		\put (20, 80) {{\parbox{32mm}{%
+					\textbf{Attaques :}
+					{\scriptsize
+					\begin{itemize}
+					  \xintFor* ##1 in \monsterattack@list\do {
+						\item \textbf{\@nameuse{name::##1} :} \@nameuse{##1}
+					  }
+					\end{itemize}}
+			}}}
+		\put (56, 80) {{\parbox{14mm}{\centering\bfseries \@nameuse{taco}}}}
+		
+		\put (3, 63) {{\parbox{22mm}{\centering\bfseries Sauvegarde}}}
+		\put (45, 60) {{\parbox{15mm}{\centering\bfseries Moral}}}
+		\put (45, 51) {{\parbox{15mm}{\centering\bfseries \@nameuse{moral}}}}
+		\put (45, 35) {{\parbox{15mm}{\centering\bfseries Trésor}}}
+		\put (45, 28) {{\parbox{15mm}{\centering\bfseries\Huge \adjustbox{max width=15mm}{\@nameuse{tresor}}}}}
+
+		\put (18, 54) {{\parbox{6mm}{\centering\bfseries \@nameuse{save_mort_poison}}}}
+		\put (18, 42) {{\parbox{6mm}{\centering\bfseries \@nameuse{save_mort_poison}}}}
+		\put (18, 31) {{\parbox{6mm}{\centering\bfseries \@nameuse{save_mort_poison}}}}
+		\put (18, 19) {{\parbox{6mm}{\centering\bfseries \@nameuse{save_mort_poison}}}}
+		\put (18, 8) {{\parbox{6mm}{\centering\bfseries \@nameuse{save_mort_poison}}}}
+		
+		\put (46, 7) {{\parbox{26mm}{\centering\bfseries \@nameuse{mvt}}}}
+										
+		%%%%%%%%%%%%
+		\put (80,121){\begin{minipage}[t]{105mm}
+				\@nameuse{description}
+				
+				\par\noindent\rule{\textwidth}{0.5pt}
+				
+				\ifx\monsterdetail@list\@empty
+				%%
+				\else
+				\teststring{Vampire}{\@nameuse{name}}{\vspace{-10mm}\begin{multicols}{2}\tiny }{}
+					\begin{itemize}
+						\xintFor* ##1 in \monsterdetail@list\do {
+							\item \textbf{\@nameuse{name::##1} :} \@nameuse{##1}
+						}
+					\end{itemize}
+					\teststring{Vampire}{\@nameuse{name}}{\end{multicols}}{}
+				\fi
+		\end{minipage}}
+	\end{overpic}
+
+	
+%	\clearpage
+%	\chapter{}
+%	\vspace{-1cm}
+%	\begin{multicols}{2}[]
+%	\section*{Description}
+%	\@nameuse{description}
+%	\section*{Attaques}
+%	\begin{itemize}
+%		\xintFor* ##1 in \monsterattack@list\do {
+%			\item \textbf{\@nameuse{name::##1} :} \@nameuse{##1}
+%		}
+%	\end{itemize}
+%	\vfill\null
+%	\columnbreak
+%	\raggedright
+%	\begin{tabular}{lp{0.7\columnwidth}}
+%		\hline
+%		\textbf{Classe d'armure} & \@nameuse{ca} \\
+%		\textbf{Dés de vie }	& \@nameuse{hd} \\
+%		\textbf{TAC0} 	& \@nameuse{taco} \\
+%		\textbf{Mouvement} 	& \@nameuse{mvt} \\
+%		\textbf{Sauvegardes} & MP \@nameuse{save_mort_poison} B \@nameuse{save_baguettes} PP \@nameuse{save_paralysie_petrification} S \@nameuse{save_souffles} SSB \@nameuse{save_sorts_sceptres_batons}\\
+%		\textbf{Moral} & \@nameuse{moral} \\
+%		\textbf{Alignement} 	& \@nameuse{alignement} \\
+%		\textbf{XP} 	& \@nameuse{xp} \\
+%		\textbf{Nombre} & \@nameuse{nombre_donjon} (\@nameuse{nombre_exterieur}) \\
+%		\textbf{Type de trésor} & \@nameuse{tresor} \\
+%		\hline
+%	\end{tabular}
+%
+%  	\end{multicols}
+	
+}
+
+\newenvironment{monster}{
+	\resetcaraclist
+	\resetdetaillist
+	\resetattacklist
+}{
+	\printmonster
+	\resetcaraclist
+	\resetdetaillist
+	\resetattacklist
+}
+
+\renewcommand\tableofcontents{%
+	\@starttoc{toc}%
+}
+
+\makeatother
+
+\hypersetup{colorlinks=false, hidelinks}
+
+\title{Manuel des monstres}
+\subtitle{Old School Essentials}
+\author{jki}
+%% https://mobile.twitter.com/FreeRPGImagery/status/1227634112778817536/photo/1
+\setcoverimage{1.0}{cover_midjourney.png}
+
+\topskip0pt
+\def\tightlist{}
+
+\begin{document}
+
+
+
+
+\input{all_monsters}
+%\input{liste/Vampire.tex}
+	
+\end{document}

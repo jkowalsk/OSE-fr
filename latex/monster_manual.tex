@@ -1,0 +1,184 @@
+\documentclass[10pt]{report}
+\usepackage{vanilla}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+%\usepackage{amsmath}
+%\usepackage{amsfonts}
+%\usepackage{amssymb}
+%\usepackage{graphicx}
+%\usepackage[space]{grffile} % espace dans les noms de fichier image
+%\usepackage{wrapfig}
+%\usepackage{multirow}
+%\usepackage{float}
+%\usepackage{multicol}
+%\usepackage{hyperref}
+%\usepackage[most]{tcolorbox}
+\usepackage{xinttools}
+\usepackage{etoolbox}
+\usepackage{titletoc}
+
+
+\makeatletter
+
+\global\@namedef{monstercarac@list}{}
+\global\@namedef{monsterdetail@list}{}
+\global\@namedef{monsterdetailname@list}{}
+\global\@namedef{monsterattack@list}{}
+\global\@namedef{monsterattackname@list}{}
+
+\newcommand{\resetcaraclist}{
+	\xintFor* ##1 in \monstercarac@list\do {
+		\global\@namedef{##1}{}
+	}
+	\global\@namedef{monstercarac@list}{}
+}
+
+\newcommand{\resetdetaillist}{
+	\xintFor* ##1 in \monsterdetail@list\do {
+		\global\@namedef{##1}{}
+		\global\@namedef{name::##1}{}
+	}
+	\global\@namedef{monsterdetail@list}{}
+    \global\@namedef{monsterdetailname@list}{}
+}
+
+\newcommand{\resetattacklist}{
+	\xintFor* ##1 in \monsterattack@list\do {
+		\global\@namedef{##1}{}
+		\global\@namedef{name::##1}{}
+	}
+	\global\@namedef{monsterattack@list}{}
+	\global\@namedef{monsterattackname@list}{}
+}
+
+\newcommand{\monstercarac}[2]{
+	\global\@namedef{#1}{#2}
+	\g@addto@macro\monstercarac@list{{#1}}
+}
+
+\newcommand{\monsterdetail}[2]{
+	\global\@namedef{#1}{#2}
+	\global\@namedef{name::#1}{#1}
+	\g@addto@macro\monsterdetail@list{{#1}}
+    \g@addto@macro\monsterdetailname@list{{#1}}
+}
+
+\newcommand{\monsterattack}[2]{
+	\global\@namedef{#1}{#2}
+	\global\@namedef{name::#1}{#1}
+	\g@addto@macro\monsterattack@list{{#1}}
+	\g@addto@macro\monsterattackname@list{{#1}}
+}
+
+\newcommand{\printcarac}[2]{
+	#2 : \@nameuse{#1}
+}
+
+\newcommand{\teststring}[2]{% or \def\teststring#1#2{
+		\edef\@teststringA{#1}%
+		\edef\@teststringB{#2}%
+		\ifx\@teststringA\@teststringB
+		\expandafter\@firstoftwo
+		\else
+		\expandafter\@secondoftwo
+		\fi
+	}
+
+\def\forcetwocols{Vampire}% special too long details
+
+\newcommand{\printmonster}{
+	\clearpage
+	\chapter{\@nameuse{name}}
+	\vspace{-1cm}
+	\begin{multicols}{2}[]
+	\section*{Description}
+	\@nameuse{description}
+	\section*{Attaques}
+	\begin{itemize}
+		\xintFor* ##1 in \monsterattack@list\do {
+			\item \textbf{\@nameuse{name::##1} :} \@nameuse{##1}
+		}
+	\end{itemize}
+	\vfill\null
+	\columnbreak
+	\raggedright
+	\begin{tabular}{lp{0.7\columnwidth}}
+		\hline
+		\textbf{Classe d'armure} & \@nameuse{ca} \\
+		\textbf{Dés de vie }	& \@nameuse{hd} \\
+		\textbf{TAC0} 	& \@nameuse{taco} \\
+		\textbf{Mouvement} 	& \@nameuse{mvt} \\
+		\textbf{Sauvegardes} & MP \@nameuse{save_mort_poison} B \@nameuse{save_baguettes} PP \@nameuse{save_paralysie_petrification} S \@nameuse{save_souffles} SSB \@nameuse{save_sorts_sceptres_batons}\\
+		\textbf{Moral} & \@nameuse{moral} \\
+		\textbf{Alignement} 	& \@nameuse{alignement} \\
+		\textbf{XP} 	& \@nameuse{xp} \\
+		\textbf{Nombre} & \@nameuse{nombre_donjon} (\@nameuse{nombre_exterieur}) \\
+		\textbf{Type de trésor} & \@nameuse{tresor} \\
+		\hline
+	\end{tabular}
+
+  	\end{multicols}
+	\ifx\monsterdetail@list\@empty
+	%%
+	\else
+	  \teststring{Vampire}{\@nameuse{name}}{
+		\begin{multicols*}{2}[\section*{Détails}\vspace{-0.5cm}]
+		}{\section*{Détails}}
+	\begin{itemize}
+		\xintFor* ##1 in \monsterdetail@list\do {
+		\item \textbf{\@nameuse{name::##1} :} \@nameuse{##1}
+		}
+	\end{itemize}
+	\teststring{Vampire}{\@nameuse{name}}{\end{multicols*}}{}
+	\fi
+}
+
+\newenvironment{monster}{
+	\resetcaraclist
+	\resetdetaillist
+	\resetattacklist
+}{
+	\printmonster
+	\resetcaraclist
+	\resetdetaillist
+	\resetattacklist
+}
+
+\renewcommand\tableofcontents{%
+	\@starttoc{toc}%
+}
+
+\makeatother
+
+\hypersetup{colorlinks=false, hidelinks}
+
+\title{Manuel des monstres}
+\subtitle{Old School Essentials}
+\author{jki}
+%% https://mobile.twitter.com/FreeRPGImagery/status/1227634112778817536/photo/1
+\setcoverimage{1.0}{cover_midjourney.png}
+
+\topskip0pt
+\def\tightlist{}
+
+\begin{document}
+\maketitle
+
+\titlecontents{chapter}[0em]
+{\small}%
+{}% numbered sections formatting
+{}% unnumbered sections formatting
+{\titlerule*{.}\contentspage}%
+\renewcommand{\baselinestretch}{0.5}\normalsize
+\renewcommand{\contentsname}{Sommaire}
+\begin{multicols}{4}[\section*{\contentsname}]
+\tableofcontents
+\end{multicols}
+\renewcommand{\baselinestretch}{1.0}\normalsize
+
+
+\input{all_monsters}
+%\input{liste/Abeille_tueuse.tex}
+	
+\end{document}

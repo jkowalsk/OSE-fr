@@ -124,6 +124,8 @@ impl Monstre {
         writeln!(out, "\\monstercarac{{nombre_exterieur}}{{{}}}", self.stats.nombre.exterieur)?;
         writeln!(out, "\\monstercarac{{tresor}}{{{}}}", self.stats.tresor.0)?;
 
+        writeln!(out, "\\monstercarac{{mvt}}{{{}}}", self.stats.mouvement)?;
+
         writeln!(out, "\\monstercarac{{save_mort_poison}}{{{}}}", self.stats.sauvegarde.mort_poison)?;
         writeln!(out, "\\monstercarac{{save_baguettes}}{{{}}}", self.stats.sauvegarde.baguettes)?;
         writeln!(out, "\\monstercarac{{save_paralysie_petrification}}{{{}}}", self.stats.sauvegarde.paralysie_petrification)?;
@@ -171,15 +173,9 @@ mod test {
 
     #[test]
     fn monster_to_tex() -> std::io::Result<()> {
-        let monsters = super::Monstre::from_md("../src/Monstres/liste/Vampire.md")?;
+        let monsters = super::Monstre::from_md("../src/Monstres/liste/Dragon.md")?;
         let mut stdout = std::io::stdout();
         for monstre in monsters {
-            for detail in &monstre.details {
-                println!("-----");
-                println!("detail : {}", detail.nom);
-                println!("description : {}", detail.description);
-                println!("-----");
-            }
           monstre.to_tex(&mut stdout).unwrap();
         }
         Ok(())

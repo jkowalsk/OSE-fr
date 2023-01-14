@@ -74,7 +74,8 @@ impl Attaque {
         let effet = if vals.len() == 1 {
             String::new()
         } else {
-            vals[1].clone().trim().into()
+            let v : Vec<String> = vals[1].split(")").map(|x| x.to_string()).collect();
+            v[0].clone()
         };
         Attaque { description, effet }
     }
@@ -84,10 +85,15 @@ impl Attaque {
 pub struct Attaques(pub Vec<Attaque>);
 impl Attaques {
     pub fn from(val: &str) -> Self {
+        let val = val.replace("\\[", "");
+        let val = val.replace("\\]", "");
         let mut attacks = Vec::new();
-        let vals: Vec<&str> = val.split(", ").collect();
-        for val in vals {
-            attacks.push(Attaque::from(val))
+        let t : Vec<&str> = val.split("ou ").collect();
+        for value in t {
+            let vals: Vec<&str> = value.split(", ").collect();
+            for val in vals {
+                attacks.push(Attaque::from(val))
+            }
         }
         Attaques(attacks)
     }
@@ -109,7 +115,8 @@ impl Mouvement {
         let rencontre = if vals.len() == 1 {
             String::new()
         } else {
-            vals[1].clone().trim().into()
+            let v : Vec<String> = vals[1].split(")").map(|x| x.to_string()).collect();
+            v[0].clone()
         };
         Mouvement { base, rencontre }
     }
@@ -151,7 +158,7 @@ pub struct StatBlock {
     pub hd: Hd,
     pub attacks: Attaques,
     pub taco: Taco,
-    pub mouvement: Mouvement,
+    pub mouvement: String,
     pub sauvegarde: Saves,
     pub moral: Moral,
     pub alignement: Alignement,
@@ -178,7 +185,7 @@ impl StatBlock {
             } else if line.starts_with("| TAC0") {
                 res.taco = Taco(vals[2].trim().replace("\\", ""))
             } else if line.starts_with("| Dép") {
-                res.mouvement = Mouvement::from(&vals[2].trim());
+                res.mouvement = String::from(vals[2].trim());
             } else if line.starts_with("| Jets ") {
                 res.sauvegarde = Saves::from(&vals[2].trim());
             } else if line.starts_with("| Moral") {
