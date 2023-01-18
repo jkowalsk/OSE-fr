@@ -71,8 +71,41 @@
 \RequirePackage{tikz}
 \RequirePackage{microtype}
 \RequirePackage{multicol}
-
+\RequirePackage{anyfontsize}
 \usetikzlibrary{calc}
+\usetikzlibrary{fadings}
+
+\DeclareDocumentCommand{\hexagon}{O{Black} m m O{}}{
+	\fill [#1, #4] ($ (#2) + (0:#3) $) -- ($ (#2) + (60:#3) $) -- ($ (#2) + (120:#3) $) -- ($ (#2) + (180:#3) $) -- ($ (#2) + (240:#3) $) -- ($ (#2) + (300:#3) $) -- cycle;
+}
+
+\DeclareDocumentCommand{\hexagonOutline}{O{Black} m m O{ultra thick}}{
+	\path [draw, #1, #4] ($ (#2) + (0:#3) $) -- ($ (#2) + (60:#3) $) -- ($ (#2) + (120:#3) $) -- ($ (#2) + (180:#3) $) -- ($ (#2) + (240:#3) $) -- ($ (#2) + (300:#3) $) -- cycle;
+}
+
+\newcommand{\chapterNumberRadius}{2.1cm}
+\titleformat{\part}[display]
+{}
+{
+	\begin{tikzpicture}[remember picture, overlay]
+		\fill[fill=maincolor] (current page.south west) rectangle ++(7.5cm, \paperheight);
+	\end{tikzpicture}
+	\thispagestyle{empty}\parbox{4cm}{\hfill\Huge\scshape Partie \hspace*{2mm}}}
+{4pt}
+{
+	\begin{minipage}[t]{7cm}
+		\mbox{}\\
+		\null\hfill\fontsize{6.5cm}{1ex}\selectfont{\scshape\color{White}\thepart}
+	\end{minipage}
+	\hspace*{-5mm}
+	\begin{minipage}[t]{\textwidth-7cm}
+		\mbox{}\\
+		\vspace*{-1.1cm}
+		\begin{flushleft}
+			\fontsize{2cm}{1em}\selectfont\scshape
+}
+[\end{flushleft}\end{minipage}]
+
 
 \titleformat{\chapter}[display]{\Huge\bfseries\scshape}{% Changed \normalfont
   \thispagestyle{fancy}
