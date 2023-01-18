@@ -17,6 +17,7 @@
 \usepackage{xinttools}
 \usepackage{etoolbox}
 \usepackage{titletoc}
+\usepackage{float}
 
 
 \makeatletter
@@ -177,8 +178,29 @@
 \end{multicols}
 \renewcommand{\baselinestretch}{1.0}\normalsize
 
+\part{Points de règle}
+\input{Généralités.tex}
+\input{Groupe_d_aventuriers.tex}
+\chapter{Tables de rencontres}
+\input{Tableaux_de_rencontre_des_donjons.tex}
+\pagebreak
+\input{Tableaux_des_rencontres_en_Contrées_sauvages.tex}
+\pagebreak
+\input{Rencontres_en_place_forte.tex}
 
+\part{Description des monstres}
 \input{all_monsters}
 %\input{liste/Abeille_tueuse.tex}
+	
+\part{Attributions}	
+
+Ce document est simplement une mise en forme du contenu du SRD "Open School Essential", disponible à l'adresse :
+\url{https://oldschoolessentials.necroticgnome.com/fr/srd}.
+
+L'image de couverture a été généré via Midjourney (\url{https://midjourney.com/}) et par conséquent est sous licence "Creative Commons Noncommercial 4.0 Attribution International License" (CC BY-NC 4.0).
+Le texte complet de la licence est disponible sous \url{https://creativecommons.org/licenses/by-nc/4.0/legalcode}.
+
+\section*{Open Game Licence}
+\input{OGL.txt}
 	
 \end{document}
