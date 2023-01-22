@@ -1,7 +1,7 @@
 \documentclass[10pt]{report}
 \usepackage{vanilla}
 \usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
+%\usepackage[T1]{fontenc}
 
 %\usepackage{amsmath}
 %\usepackage{amsfonts}
@@ -19,6 +19,16 @@
 \usepackage{titletoc}
 \usepackage[percent]{overpic}
 \usepackage{adjustbox}
+\usepackage{xparse}
+\usepackage{xstring}
+\usepackage{pgffor}
+\usepackage{trace}
+\usepackage{etoolbox}
+\usepackage{tikz}
+\usepackage{tabularx}
+\usepackage{ifthen}
+
+\definecolor{maincolor}{named}{Gray} 
 
 \makeatletter
 
@@ -76,15 +86,36 @@
 	#2 : \@nameuse{#1}
 }
 
-\newcommand{\teststring}[2]{% or \def\teststring#1#2{
-		\edef\@teststringA{#1}%
-		\edef\@teststringB{#2}%
-		\ifx\@teststringA\@teststringB
-		\expandafter\@firstoftwo
-		\else
-		\expandafter\@secondoftwo
-		\fi
-	}
+\newcounter{current}
+\newcommand{\attackmatrix}[1]{ %
+	\setcounter{current}{ #1 }
+	\def\tabledata{}% reset \tabledata
+	\foreach  \n in {0,...,8}{
+		\protected@xappto\tabledata{\thecurrent &}
+		\ifthenelse{\equal{\thecurrent}{2}}{}{\addtocounter{current}{-1}}
+	}%
+	\protected@xappto\tabledata{ \thecurrent \\}
+	\tabledata 
+}
+
+\NewDocumentCommand{\printallmatrix}{ > { \SplitList {/} } m }{%
+	\ProcessList{#1}{\printsinglematrix}%
+}
+\newcommand{\firstpart}{}
+
+\NewDocumentCommand{\printsinglematrix}{m}{%
+	\StrBefore{#1}{[}[\CounterTemp]
+	\expandafter\attackmatrix\expandafter{\CounterTemp}
+}
+
+\newcommand{\allattackmatrix}{
+	\edef\tmp{\@nameuse{taco}}%
+	\begin{tabular}{|p{4mm}|c|c|c|c|c|c|c|c|c|}%
+		\titlecell 0 & \titlecell 1 & \titlecell 2 & \titlecell 3 & \titlecell 4 & \titlecell 5 & \titlecell 6 & \titlecell 7 & \titlecell 8 & \titlecell 9 \\
+		\expandafter\printallmatrix\expandafter{\tmp}
+	\end{tabular}
+}
+
 
 \setlength\columnsep{3mm} 
 \setlist[itemize]{leftmargin=*}
@@ -92,18 +123,28 @@
 
 \newcommand{\printmonster}{
 	\clearpage
-	
-	  %\begin{overpic}[abs,unit=1mm,width=\textwidth,grid,tics=5]{monstre.png}
-      \begin{overpic}[abs,unit=1mm,width=\textwidth,tics=5]{monstre.png}
-		\put (11,120) {{\makebox[50mm]{\centering\adjustbox{max width=50mm}{
-						\bfseries\Huge \@nameuse{name}}}}}
+	%\vspace*{-10pt}
+	\fbox{
+		\begin{minipage}[t][0.65\textwidth]{\textwidth}
+			\centering
+			\rotatebox[origin=c]{180}{\includegraphics[width=\textwidth,height=0.65\textwidth,keepaspectratio]{placeholder.jpg}}
+		\end{minipage}
+	}
+	\fbox{
+	  %\begin{overpic}[abs,unit=1mm,width=\textwidth,grid,tics=5]{feuille_monstre.pdf}
+      \begin{overpic}[abs,unit=1mm,width=\textwidth,tics=5]{feuille_monstre.pdf}
+		\put (4,124.5) {{\makebox[65mm]{\adjustbox{max width=65mm}{\Huge \@nameuse{name}}}}}
 		
-		\put (3, 100) {{\parbox{12mm}{\centering\bfseries \@nameuse{hd}}}}
-		\put (27, 100) {{\parbox[t]{20mm}{\centering\bfseries \@nameuse{alignement}}}}
-		\put (58, 100) {{\parbox{12mm}{\centering\bfseries \@nameuse{xp}}}}
+		\put (2, 117) {{\parbox{80mm}{Dés de Vie : \@nameuse{hd}}}}
+		\put (2, 111) {{\parbox{40mm}{\@nameuse{alignement}}}}
+		\put (10, 111) {\parbox{63mm}{\raggedleft\adjustbox{max width=50mm}{ XP : \@nameuse{xp}}}}
 		
-		\put (5, 80) {{\parbox{8mm}{\centering\bfseries \@nameuse{ca}}}}
-		\put (20, 80) {{\parbox{32mm}{%
+		\put (1, 30) {{\makebox[73mm]{\adjustbox{max width=73mm, max height=15mm}{\scriptsize\allattackmatrix}}}}
+		
+		
+		\put (20, 60) {{\parbox{35mm}{\adjustbox{max width=35mm}{\centering taco : \@nameuse{taco}}}}}
+		\put (60, 58) {{\parbox{8mm}{\centering \@nameuse{ca}}}}
+		\put (5, 50) {{\parbox{73mm}{%
 					\textbf{Attaques :}
 					{\scriptsize
 					\begin{itemize}
@@ -111,25 +152,25 @@
 						\item \textbf{\@nameuse{name::##1} :} \@nameuse{##1}
 					  }
 					\end{itemize}}
-			}}}
-		\put (56, 80) {{\parbox{14mm}{\centering\bfseries \@nameuse{taco}}}}
-		
-		\put (3, 63) {{\parbox{22mm}{\centering\bfseries Sauvegarde}}}
-		\put (45, 60) {{\parbox{15mm}{\centering\bfseries Moral}}}
-		\put (45, 51) {{\parbox{15mm}{\centering\bfseries \@nameuse{moral}}}}
-		\put (45, 35) {{\parbox{15mm}{\centering\bfseries Trésor}}}
-		\put (45, 28) {{\parbox{15mm}{\centering\bfseries\Huge \adjustbox{max width=15mm}{\@nameuse{tresor}}}}}
+			}}}	
 
-		\put (18, 54) {{\parbox{6mm}{\centering\bfseries \@nameuse{save_mort_poison}}}}
-		\put (18, 42) {{\parbox{6mm}{\centering\bfseries \@nameuse{save_mort_poison}}}}
-		\put (18, 31) {{\parbox{6mm}{\centering\bfseries \@nameuse{save_mort_poison}}}}
-		\put (18, 19) {{\parbox{6mm}{\centering\bfseries \@nameuse{save_mort_poison}}}}
-		\put (18, 8) {{\parbox{6mm}{\centering\bfseries \@nameuse{save_mort_poison}}}}
+		\put (5, 100) {\adjustbox{max width=28mm}{{Moral : \@nameuse{moral}}}}
+		\put (5, 95) {\adjustbox{max width=28mm}{{\scriptsize Fréq. Donj.~ : \@nameuse{nombre_donjon}}}}
+		\put (5, 90) {\adjustbox{max width=28mm}{{\scriptsize Fréq. Ext.~: \@nameuse{nombre_exterieur}}}}
+
+		\put (12, 76)  {{\parbox{40mm}{\adjustbox{max width=40mm}{\@nameuse{mvt}}}}}
+		\put (65, 76) {{\parbox{7mm}{\centering\adjustbox{max width=7mm}{\@nameuse{tresor}}}}}
+
+		\put (44, 4) {{\parbox{6mm}{\centering \@nameuse{save_mort_poison}}}}
+		\put (65.5, 10.5) {{\parbox{6mm}{\centering \@nameuse{save_baguettes}}}}
+		\put (44, 10.5) {{\parbox{6mm}{\centering \@nameuse{save_paralysie_petrification}}}}
+		\put (65.5, 4) {{\parbox{6mm}{\centering \@nameuse{save_souffles}}}}
+		\put (21.5, 4) {{\parbox{6mm}{\centering \@nameuse{save_sorts_sceptres_batons}}}}
 		
-		\put (46, 7) {{\parbox{26mm}{\centering\bfseries \@nameuse{mvt}}}}
+
 										
 		%%%%%%%%%%%%
-		\put (80,121){\begin{minipage}[t]{105mm}
+		\put (80,120){\begin{minipage}[t]{105mm}
 				\@nameuse{description}
 				
 				\par\noindent\rule{\textwidth}{0.5pt}
@@ -137,17 +178,22 @@
 				\ifx\monsterdetail@list\@empty
 				%%
 				\else
-				\teststring{Vampire}{\@nameuse{name}}{\vspace{-10mm}\begin{multicols}{2}\tiny }{}
+				\IfSubStr{\@nameuse{name}}{Dragon}{\vspace{-5mm}\begin{multicols}{2}\tiny }{}
+				\IfSubStr{\@nameuse{name}}{Pourceau}{\vspace{-5mm}\begin{multicols}{2}\scriptsize }{}
+				\IfSubStr{\@nameuse{name}}{garou}{\scriptsize}{}				\IfSubStr{\@nameuse{name}}{Pirate}{\small}{}
+				\IfSubStr{\@nameuse{name}}{Vampire}{\vspace{-5mm}\begin{multicols}{2}\tiny }{}
 					\begin{itemize}
 						\xintFor* ##1 in \monsterdetail@list\do {
 							\item \textbf{\@nameuse{name::##1} :} \@nameuse{##1}
 						}
 					\end{itemize}
-					\teststring{Vampire}{\@nameuse{name}}{\end{multicols}}{}
+				\IfSubStr{\@nameuse{name}}{Dragon}{\end{multicols}}{}
+				\IfSubStr{\@nameuse{name}}{Vampire}{\end{multicols}}{}
+				\IfSubStr{\@nameuse{name}}{Pourceau}{\end{multicols}}{}
 				\fi
 		\end{minipage}}
 	\end{overpic}
-
+	}
 	
 %	\clearpage
 %	\chapter{}
