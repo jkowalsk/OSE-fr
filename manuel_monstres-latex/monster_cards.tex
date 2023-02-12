@@ -121,6 +121,8 @@
 \setlist[itemize]{leftmargin=*}
 \pagestyle{empty}
 
+\graphicspath{{img/}} 
+
 \newcommand{\printmonster}{
 	\clearpage
 	%\vspace*{-10pt}
@@ -128,6 +130,7 @@
 		\begin{minipage}[t][0.65\textwidth]{\textwidth}
 			\centering
 			\rotatebox[origin=c]{180}{\includegraphics[width=\textwidth,height=0.65\textwidth,keepaspectratio]{placeholder.jpg}}
+			%\rotatebox[origin=c]{180}{\includegraphics[width=\textwidth,height=0.65\textwidth,keepaspectratio]{\@nameuse{img}}}
 		\end{minipage}
 	}
 	\fbox{
@@ -135,37 +138,36 @@
       \begin{overpic}[abs,unit=1mm,width=\textwidth,tics=5]{feuille_monstre.pdf}
 		\put (4,124.5) {{\makebox[65mm]{\adjustbox{max width=65mm}{\Huge \@nameuse{name}}}}}
 		
-		\put (2, 117) {{\parbox{80mm}{Dés de Vie : \@nameuse{hd}}}}
+		\put (0, 117) {{\parbox{75mm}{\centering Dés de Vie : \@nameuse{hd}}}}
 		\put (2, 111) {{\parbox{40mm}{\@nameuse{alignement}}}}
 		\put (10, 111) {\parbox{63mm}{\raggedleft\adjustbox{max width=50mm}{ XP : \@nameuse{xp}}}}
-		
-		\put (1, 30) {{\makebox[73mm]{\adjustbox{max width=73mm, max height=15mm}{\scriptsize\allattackmatrix}}}}
-		
-		
-		\put (20, 60) {{\parbox{35mm}{\adjustbox{max width=35mm}{\centering taco : \@nameuse{taco}}}}}
-		\put (60, 58) {{\parbox{8mm}{\centering \@nameuse{ca}}}}
-		\put (5, 50) {{\parbox{73mm}{%
+
+		\put (5, 100) {\adjustbox{max width=30mm}{{Donjon~: \@nameuse{nombre_donjon}}}}
+		\put (40, 100) {\adjustbox{max width=30mm}{{Extérieur~: \@nameuse{nombre_exterieur}}}}
+
+		\put (12, 88)  {{\parbox{40mm}{\adjustbox{max width=40mm}{\@nameuse{mvt}}}}}
+		\put (65, 88) {{\parbox{7mm}{\centering\adjustbox{max width=7mm}{\@nameuse{tresor}}}}}
+
+		\put (17, 75) {\adjustbox{max width=40mm}{{\textbf{Moral :} \@nameuse{moral}}}}		
+		\put (5, 70) {{\parbox{50mm}{\adjustbox{max width=50mm}{\centering \textbf{TACO} : \@nameuse{taco}}}}}
+		\put (60, 75) {{\parbox{8mm}{\centering \@nameuse{ca}}}}
+		\put (5, 65) {{\parbox[t][][t]{68mm}{%
 					\textbf{Attaques :}
-					{\scriptsize
+					{\small 
 					\begin{itemize}
 					  \xintFor* ##1 in \monsterattack@list\do {
 						\item \textbf{\@nameuse{name::##1} :} \@nameuse{##1}
 					  }
 					\end{itemize}}
-			}}}	
+					\hspace{-2mm}\adjustbox{max width=70mm, max height=20mm}{\footnotesize \allattackmatrix}
+			}}}
 
-		\put (5, 100) {\adjustbox{max width=28mm}{{Moral : \@nameuse{moral}}}}
-		\put (5, 95) {\adjustbox{max width=28mm}{{\scriptsize Fréq. Donj.~ : \@nameuse{nombre_donjon}}}}
-		\put (5, 90) {\adjustbox{max width=28mm}{{\scriptsize Fréq. Ext.~: \@nameuse{nombre_exterieur}}}}
 
-		\put (12, 76)  {{\parbox{40mm}{\adjustbox{max width=40mm}{\@nameuse{mvt}}}}}
-		\put (65, 76) {{\parbox{7mm}{\centering\adjustbox{max width=7mm}{\@nameuse{tresor}}}}}
-
-		\put (44, 4) {{\parbox{6mm}{\centering \@nameuse{save_mort_poison}}}}
-		\put (65.5, 10.5) {{\parbox{6mm}{\centering \@nameuse{save_baguettes}}}}
-		\put (44, 10.5) {{\parbox{6mm}{\centering \@nameuse{save_paralysie_petrification}}}}
-		\put (65.5, 4) {{\parbox{6mm}{\centering \@nameuse{save_souffles}}}}
-		\put (21.5, 4) {{\parbox{6mm}{\centering \@nameuse{save_sorts_sceptres_batons}}}}
+		\put (62, 11.5) {{\parbox{6mm}{\centering \@nameuse{save_mort_poison}}}}
+		\put (30.5, 25) {{\parbox{6mm}{\centering \@nameuse{save_baguettes}}}}
+		\put (30.5, 6.5) {{\parbox{6mm}{\centering \@nameuse{save_paralysie_petrification}}}}
+		\put (62, 21.5) {{\parbox{6mm}{\centering \@nameuse{save_souffles}}}}
+		\put (30.5, 16) {{\parbox{6mm}{\centering \@nameuse{save_sorts_sceptres_batons}}}}
 		
 
 										
