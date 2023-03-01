@@ -29,7 +29,7 @@ conditions suivantes s’appliquent :
     lancer de sorts, ou utiliser des capacités de classes. Cette période
     de faiblesse ne peut pas être réduite grâce à des soins magiques.
 
-## Inversé : Doigt de mort
+**Inversé : Doigt de mort**
 
 Dirige un rayon de magie mortelle sur une cible unique. Si cette
 dernière rate son jet de sauvegarde contre la mort, elle meurt

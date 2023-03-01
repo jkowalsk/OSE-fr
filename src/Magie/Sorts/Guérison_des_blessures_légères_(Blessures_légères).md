@@ -14,7 +14,7 @@ Ce sort a deux usages :
     maximum habituel.
 2.  **Guérir la paralysie :** Les effets paralysants sont annulés.
 
-## Inversé : Blessures légères
+**Inversé : Blessures légères**
 
 Inflige 1d6+1 points de dégâts à une créature touchée. En combat, un jet
 d’attaque de mêlée est nécessaire.

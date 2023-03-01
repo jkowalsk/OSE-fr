@@ -5,7 +5,7 @@
 
 **Durée :** 6 tours
 
-**PMortée :** Le lanceur
+**Portée :** Le lanceur
 
 1d4 copies illusoires du lanceur apparaissent.
 

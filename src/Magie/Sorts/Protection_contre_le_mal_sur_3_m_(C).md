@@ -1,4 +1,4 @@
-# Protection contre le mal sur 3 m (C)
+# Protection contre le mal sur 3 m
 
 
 *[Sorts de clerc](../Sorts_de_clerc.md) 4e Niveau*

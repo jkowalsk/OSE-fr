@@ -24,7 +24,7 @@ spécifique.
   - **Accomplissement :** Une fois la tâche accomplie, le sort prend
     fin.
 
-## Inversé : Annulation de quête
+**Inversé : Annulation de quête**
 
 Peut dissiper les effets d’un sort quête. Si la personne ayant lancé le
 sort quête est d’un niveau supérieur à celle lançant le sort annulation

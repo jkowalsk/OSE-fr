@@ -14,7 +14,7 @@ Ce sort à deux usages :
 2.  **Tuer un limon vert :** [Ce monstre](../../Monstres/liste/Limon_vert.md) est
     tué instantanément.
 
-## Inversé : Contamination
+**Inversé : Contamination**
 
 Inflige une terrible et foudroyante maladie à une victime, si celle-ci
 rate son jet de sauvegarde contre les sorts. La maladie possède les

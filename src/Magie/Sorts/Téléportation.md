@@ -23,8 +23,8 @@ choisi par le lanceur.
   - **Risque :** Il existe un risque, lors de la téléportation,
     d'arriver accidentellement au-dessus ou au-dessous du niveau du sol.
     Les chances de réussite de la téléportation dépendent de la
-    connaissance qu’a le lanceur de la destination (voir à droite).
-    Lancez un dé de pourcentage et consultez le tableau ci-dessous.
+    connaissance qu’a le lanceur de la destination.
+    Lancez un dé de pourcentage et consultez le tableau.
 
 ## Résultat de la téléportation
 

@@ -18,11 +18,8 @@ elles-mêmes de décider de leur action.
   - **Comportement :** Effectuez à chaque round un jet sur le tableau
     suivant pour chaque cible afin de voir ce qu’elle fait ce round-ci :
 
-#### Confusion : comportement de la cible
-
-|         |                               |
-| ------- | ----------------------------- |
 | **2d6** | **Comportement**              |
+| ------- | ----------------------------- |
 | 2–5     | Attaque le groupe du lanceur  |
 | 6–8     | Aucune action                 |
 | 9–12    | Attaque le groupe de la cible |

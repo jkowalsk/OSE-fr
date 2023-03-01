@@ -1,4 +1,4 @@
-# Protection contre le mal (M)
+# Protection contre le mal
 
 
 *[Sorts de magicien](../Sorts_de_magicien.md) 1er Niveau*

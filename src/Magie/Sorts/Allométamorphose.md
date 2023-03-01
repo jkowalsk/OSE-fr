@@ -3,7 +3,7 @@
 
 *[Sorts de magicien](../Sorts_de_magicien.md) 4e Niveau*
 
-*Durée :*' Permanente
+**Durée :** Permanente
 
 **Portée :** 18 m
 

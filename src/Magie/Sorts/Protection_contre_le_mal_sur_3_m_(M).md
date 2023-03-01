@@ -1,4 +1,4 @@
-# Protection contre le mal sur 3 m (M)
+# Protection contre le mal sur 3 m
 
 
 *[Sorts de magicien](../Sorts_de_magicien.md) 3e Niveau*

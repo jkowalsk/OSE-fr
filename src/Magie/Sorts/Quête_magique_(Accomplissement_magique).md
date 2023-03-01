@@ -23,7 +23,7 @@ action spécifique.
     malus à l’attaque, réductions de caractéristiques, incapacité à
     mémoriser les sorts, tourments physiques et faiblesse, etc.
 
-## Inversé : Accomplissement magique
+**Inversé : Accomplissement magique**
 
 Peut dissiper un sort de quête magique actif et tout malus encouru. Si
 le niveau du lanceur de la quête magique à annuler est d’un niveau plus

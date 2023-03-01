@@ -1,4 +1,4 @@
-# Lumière (Ténèbres) (C)
+# Lumière (Ténèbres)
 
 
 *[Sorts de clerc](../Sorts_de_clerc.md) 1er Niveau*
@@ -20,7 +20,7 @@ Ce sort a trois usages :
 3.  **Annuler les ténèbres :** Lumière peut annuler le sort ténèbres
     (voir ci-dessous)
 
-## Inversé : Ténèbres
+**Inversé : Ténèbres**
 
 Crée une zone d’obscurité magique dans un rayon de 5 m, privant toute
 créature de sa vue normale (mais pas d’une éventuelle infravision). À

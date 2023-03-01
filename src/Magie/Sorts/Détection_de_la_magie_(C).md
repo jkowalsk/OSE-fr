@@ -1,4 +1,4 @@
-# Détection de la magie (C)
+# Détection de la magie
 
 
 *[Sorts de clerc](../Sorts_de_clerc.md) 1er Niveau*

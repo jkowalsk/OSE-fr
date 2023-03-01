@@ -15,7 +15,7 @@ Ce sort peut être utilisé dans l’une des deux situations suivantes :
 2.  **Rituel :** À la discrétion de l’arbitre, le sort bénédiction peut
     faire partie de certains rituels de purification ou de consécration.
 
-## Inversé : Malédiction
+**Inversé : Malédiction**
 
 Ce sort entraîne un malus de – 1 aux jets de moral, ainsi qu’aux jets
 d’attaques et de dégâts dans une zone de 6 m². Un jet de sauvegarde
