@@ -20,7 +20,9 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: OSE-fr
-          path: ./*/book
+          path: |
+            book/
+            README.md
   build_latex:
     runs-on: ubuntu-latest
     steps:
@@ -50,7 +52,9 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: OSE-pdf
-          path: ./*/book
+          path: |
+            book/
+            README.md
   make_page_artifact:
     needs: [build_mdbook, build_latex]
     runs-on: ubuntu-latest
