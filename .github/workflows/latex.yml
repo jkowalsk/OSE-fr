@@ -9,6 +9,8 @@ on:
 jobs:
   build_latex:
     runs-on: ubuntu-latest
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}
     steps:
       - name: Set up Git repository
         uses: actions/checkout@v3
@@ -27,3 +29,14 @@ jobs:
         with:
           root_file: spell_card.tex
           working_directory: spell_latex/
+      - run: |
+          mkdir -p book
+          cp manuel_monstres-latex/monster_manual.pdf book
+          cp manuel_monstres-latex/monster_cards.pdf book
+          cp spell_latex/spell_card.pdf book
+      - name: Deploy tex
+        uses: peaceiris/actions-gh-pages@v3
+        if: ${{ github.ref == 'refs/heads/main' }}
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./book
