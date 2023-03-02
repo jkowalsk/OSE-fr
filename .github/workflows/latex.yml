@@ -16,6 +16,11 @@ jobs:
         with:
           mdbook-version: "latest"
       - run: mdbook build
+      - name: Upload mdbook
+        uses: actions/upload-artifact@v3
+        with:
+          name: OSE-fr
+          path: book
   build_latex:
     runs-on: ubuntu-latest
     steps:
@@ -41,10 +46,23 @@ jobs:
           cp manuel_monstres-latex/monster_manual.pdf book
           cp manuel_monstres-latex/monster_cards.pdf book
           cp spell_latex/spell_card.pdf book
+      - name: Upload PDF
+        uses: actions/upload-artifact@v3
+        with:
+          name: OSE-pdf
+          path: book
   make_artifacts:
     needs: [build_mdbook, build_latex]
     runs-on: ubuntu-latest
     steps:
+    - name: Download mdbook
+      uses: actions/download-artifact@v3
+      with:
+          name: OSE-fr
+    - name: Download pdf
+      uses: actions/download-artifact@v3
+      with:
+          name: OSE-pdf
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v3.1.2
       with:
