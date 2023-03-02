@@ -10,7 +10,7 @@ lentement.*
 | ------------------- | -------------------------------- |
 | Classe d'armure     | 7 \[12\]                         |
 | Dés de vie          | 3 (13 pv)                        |
-| Attaques            | Aucune                           |
+| Attaques            | Aucune (-)                       |
 | TAC0                | 17 \[+2\]                        |
 | Déplacement         | 3 m (1 m)                        |
 | Jets de sauvegarde  | MP 12 B 13 PP 14 S 15 SSB 16 (1) |

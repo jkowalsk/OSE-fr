@@ -1,4 +1,4 @@
-# Protection contre le mal (C)
+# Protection contre le mal
 
 
 *[Sorts de clerc](../Sorts_de_clerc.md) 1er Niveau*

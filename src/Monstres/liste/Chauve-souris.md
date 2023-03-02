@@ -23,12 +23,12 @@
 
   - **Écholocation :** Insensible aux effets qui nuisent à, modifient ou
     dépendent de la vue. Aveuglée par un silence d’origine magique.
-  - *' Essaim :*' 10 chauves-souris peuvent tourner en essaim autour de
+  - ** Essaim :** 10 chauves-souris peuvent tourner en essaim autour de
     la tête d’une cible, la plongeant en pleine confusion : malus de –2
     aux jets d’attaques et de sauvegardes ; impossibilité de lancer des
     sorts.
-  - *' Attaques :*' Comme un humain normal.
-  - *' Peureux :*' À moins d’être convoquées ou contrôlées magiquement,
+  - ** Attaques :** Comme un humain normal.
+  - ** Peureux :** À moins d’être convoquées ou contrôlées magiquement,
     les chauves-souris normales doivent effectuer un jet de moral chaque
     round ou fuir.
 

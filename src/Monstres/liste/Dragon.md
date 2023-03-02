@@ -19,10 +19,11 @@ zones de la civilisation humaine.*
   - **Schéma d’attaque :** Un dragon attaque toujours en premier avec
     son souffle, puis il souffle à nouveau ou effectue des attaques de
     mêlée (à probabilité égale).
-  - **Souffle :** Peut être utilisé jusqu’à trois fois par jour. Toutes
+  - **Souffle - général :** Peut être utilisé jusqu’à trois fois par jour. Toutes
     les créatures se trouvant dans la zone concernée subissent des
     dégâts égaux aux points de vie actuels du dragon (jet de
     sauvegarde contre les souffles divise par deux). Formes de souffle :
+    
       - **Nuage :** 15 m de long, 12 m de large, 6 m de haut.
       - **Cône :** 60 cm de large à l’entrée, 9 m à l’extrémité.
       - **Ligne :** 1,50 m de large sur toute la longueur.

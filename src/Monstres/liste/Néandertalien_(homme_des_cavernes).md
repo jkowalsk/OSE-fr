@@ -31,4 +31,4 @@ cousins humains, mais se montre amical avec les nains et les gnomes.*
   - **Ennemis ancestraux :** Attaquent les ogres à vue et détestent les
     gobelins et les kobolds.
   - **Animaux de compagnie :** Ils ont parfois des 
-  - [Gorilles blancs](Gorille_blanc.md) comme animaux de compagnie.
+    [Gorilles blancs](Gorille_blanc.md) comme animaux de compagnie.

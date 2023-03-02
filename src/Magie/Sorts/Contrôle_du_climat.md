@@ -38,7 +38,7 @@ ne fonctionne qu'en extérieur.
     navires pris dans une tornade ont 75 % de chances de subir 12 points
     de dégâts de coque.
 
-#### Tornade
+Tornade:
 
 Une colonne d'air tourbillonnante, haute de 7,20 m et large de 1,80 m,
 qui cause des ravages aux créatures volantes et aux navires.

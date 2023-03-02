@@ -48,6 +48,7 @@ Habite dans les ruines, les tombes et les lieux désertés.*
   - **À 0 pv :** Il passe en forme gazeuse et fuit en direction de son
     cercueil.
   - **Changeur de forme :** À volonté ; prend 1 round :
+    
     1.  **Humanoïde :** Forme standard.
     2.  **Loup géant :** Att 1 × morsure (2d4), DP 45 m (15 m), CA, DV,
         Ml : Comme ceux du vampire.
@@ -57,6 +58,7 @@ Habite dans les ruines, les tombes et les lieux désertés.*
         normaux. Ne peut pas attaquer.
   - **Convocation de bêtes :** Sous sa forme humaine uniquement, le
     vampire peut faire venir à lui des créatures des environs : 
+    
     - 1d10 × 10 [rats](Rat.md#Rat-normal), 
     - 5d4 [rats géants](Rat.md#Rat-géant), 
     - 1d10 × 10 [chauves-souris](Chauve-souris.md#Chauve-souris-normale),

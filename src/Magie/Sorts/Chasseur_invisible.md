@@ -3,7 +3,7 @@
 
 *[Sorts de magicien](../Sorts_de_magicien.md) 6e Niveau*
 
-'''Durée : ''' Une mission
+**Durée :** Une mission
 
 **Portée :** Convoqué devant le lanceur
 
@@ -21,7 +21,7 @@ choix.
   - **Bannissement :** Le sort dissipation du mal bannira un chasseur
     invisible, mettant fin au sort.
 
-#### Chasseur invisible
+**Chasseur invisible**
 
 Créatures magiques très intelligentes convoquées depuis un autre plan
 d'existence afin d’effectuer des tâches pour de puissants magiciens.

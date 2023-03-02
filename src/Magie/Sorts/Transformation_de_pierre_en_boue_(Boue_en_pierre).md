@@ -13,7 +13,7 @@ de profondeur.
   - **Déplacement :** Toutes les créatures passant dans la boue voient
     leur vitesse de déplacement réduite de 90 %.
 
-## Inversé : Transformation de boue en pierre
+**Inversé : Transformation de boue en pierre**
 
 Transforme un volume identique de boue en pierre. Cette altération est
 permanente.

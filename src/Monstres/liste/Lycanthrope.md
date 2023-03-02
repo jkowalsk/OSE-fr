@@ -40,17 +40,17 @@ animale.*
 
 |                  |                                        |
 | ---------------- | -------------------------------------- |
-| Armour Class     | 5 \[14\] (9 \[10\] sous forme humaine) |
-| Hit Dice         | 4\* (18 pv)                            |
-| Attacks          | 1 × morsure (2d4)                      |
-| THAC0            | 16 \[+3\]                              |
-| Movement         | 54 m (18 m)                            |
-| Saving Throws    | MP 10 B 11 PP 12 S 13 SSB 14 (4)       |
-| Morale           | 8                                      |
-| Alignment        | Chaotique                              |
+| Classe d'armure | 5 \[14\] (9 \[10\] sous forme humaine) |
+| Dés de vie     | 4\* (18 pv)                            |
+| Attaques       | 1 × morsure (2d4)                      |
+| TAC0             | 16 \[+3\]                              |
+| Déplacement     | 54 m (18 m)                            |
+| Jets de sauvegarde | MP 10 B 11 PP 12 S 13 SSB 14 (4)       |
+| Moral            | 8                                      |
+| Alignement       | Chaotique                              |
 | XP               | 125 (chef : 300)                       |
-| Number Appearing | 1d6 (2d6)                              |
-| Treasure Type    | C                                      |
+| Nombre apparaissant| 1d6 (2d6)                              |
+| Type de trésor    | C                                      |
 
 -----
 
@@ -67,17 +67,17 @@ ours normaux.*
 
 |                  |                                        |
 | ---------------- | -------------------------------------- |
-| Armour Class     | 2 \[17\] (8 \[11\] sous forme humaine) |
-| Hit Dice         | 6\* (27 pv)                            |
-| Attacks          | 2 × griffes (2d4), 1 × morsure (2d8)   |
-| THAC0            | 14 \[+5\]                              |
-| Movement         | 36 m (12 m)                            |
-| Saving Throws    | MP 10 B 11 PP 12 S 13 SSB 14 (6)       |
-| Morale           | 10                                     |
-| Alignment        | Neutre                                 |
+| Classe d'armure | 2 \[17\] (8 \[11\] sous forme humaine) |
+| Dés de vie     | 6\* (27 pv)                            |
+| Attaques       | 2 × griffes (2d4), 1 × morsure (2d8)   |
+| TAC0             | 14 \[+5\]                              |
+| Déplacement     | 36 m (12 m)                            |
+| Jets de sauvegarde | MP 10 B 11 PP 12 S 13 SSB 14 (6)       |
+| Moral            | 10                                     |
+| Alignement       | Neutre                                 |
 | XP               | 500                                    |
-| Number Appearing | 1d4 (1d4)                              |
-| Treasure Type    | C                                      |
+| Nombre apparaissant| 1d4 (1d4)                              |
+| Type de trésor    | C                                      |
 
 -----
 
@@ -96,17 +96,17 @@ proximité des forêts ou des marais.*
 
 |                  |                                                                           |
 | ---------------- | ------------------------------------------------------------------------- |
-| Armour Class     | 3 \[16\] (9 \[10\] sous forme humaine)                                    |
-| Hit Dice         | 9\* (40 pv)                                                               |
-| Attacks          | 1 × défense (2d6) ou 1 × arme (1d6 ou selon l’arme) ou 1 × magie (charme) |
-| THAC0            | 12 \[+7\]                                                                 |
-| Movement         | 54 m (18 m) / 48 m (12 m) sous forme humaine                              |
-| Saving Throws    | MP 8 B 9 PP 10 S 10 SSB 12 (9)                                            |
-| Morale           | 10                                                                        |
-| Alignment        | Chaotique                                                                 |
+| Classe d'armure | 3 \[16\] (9 \[10\] sous forme humaine)                                    |
+| Dés de vie     | 9\* (40 pv)                                                               |
+| Attaques       | 1 × défense (2d6) ou 1 × arme (1d6 ou selon l’arme) ou 1 × magie (charme) |
+| TAC0             | 12 \[+7\]                                                                 |
+| Déplacement     | 54 m (18 m) / 48 m (12 m) sous forme humaine                              |
+| Jets de sauvegarde | MP 8 B 9 PP 10 S 10 SSB 12 (9)                                            |
+| Moral            | 10                                                                        |
+| Alignement       | Chaotique                                                                 |
 | XP               | 1 600                                                                     |
-| Number Appearing | 1d3 (1d4)                                                                 |
-| Treasure Type    | C                                                                         |
+| Nombre apparaissant| 1d3 (1d4)                                                                 |
+| Type de trésor    | C                                                                         |
 
 -----
 
@@ -129,17 +129,17 @@ proximité des forêts ou des marais.*
 
 |                  |                                                     |
 | ---------------- | --------------------------------------------------- |
-| Armour Class     | 7 \[12\] (9 \[10\] sous forme humaine)              |
-| Hit Dice         | 3\* (13 pv)                                         |
-| Attacks          | 1 × morsure (1d4) ou 1 × arme (1d6 ou selon l’arme) |
-| THAC0            | 17 \[+2\]                                           |
-| Movement         | 36 m (12 m)                                         |
-| Saving Throws    | MP 12 B 13 PP 14 S 15 SSB 16 (3)                    |
-| Morale           | 8                                                   |
-| Alignment        | Chaotique                                           |
+| Classe d'armure | 7 \[12\] (9 \[10\] sous forme humaine)              |
+| Dés de vie     | 3\* (13 pv)                                         |
+| Attaques       | 1 × morsure (1d4) ou 1 × arme (1d6 ou selon l’arme) |
+| TAC0             | 17 \[+2\]                                           |
+| Déplacement     | 36 m (12 m)                                         |
+| Jets de sauvegarde | MP 12 B 13 PP 14 S 15 SSB 16 (3)                    |
+| Moral            | 8                                                   |
+| Alignement       | Chaotique                                           |
 | XP               | 50                                                  |
-| Number Appearing | 1d8 (2d8)                                           |
-| Treasure Type    | C                                                   |
+| Nombre apparaissant| 1d8 (2d8)                                           |
+| Type de trésor    | C                                                   |
 
 -----
 
@@ -156,17 +156,17 @@ humaine avec un berserker.*
 
 |                  |                                        |
 | ---------------- | -------------------------------------- |
-| Armour Class     | 4 \[15\] (9 \[10\] sous forme humaine) |
-| Hit Dice         | 4+1\* (19 pv)                          |
-| Attacks          | 1 × défense / morsure (2d6)            |
-| THAC0            | 15 \[+4\]                              |
-| Movement         | 45 m (15 m)                            |
-| Saving Throws    | MP 10 B 11 PP 12 S 13 SSB 14 (4)       |
-| Morale           | 9                                      |
-| Alignment        | Neutre                                 |
+| Classe d'armure | 4 \[15\] (9 \[10\] sous forme humaine) |
+| Dés de vie     | 4+1\* (19 pv)                          |
+| Attaques       | 1 × défense / morsure (2d6)            |
+| TAC0             | 15 \[+4\]                              |
+| Déplacement     | 45 m (15 m)                            |
+| Jets de sauvegarde | MP 10 B 11 PP 12 S 13 SSB 14 (4)       |
+| Moral            | 9                                      |
+| Alignement       | Neutre                                 |
 | XP               | 200                                    |
-| Number Appearing | 1d4 (2d4)                              |
-| Treasure Type    | C                                      |
+| Nombre apparaissant| 1d4 (2d4)                              |
+| Type de trésor    | C                                      |
 
 -----
 
@@ -183,17 +183,17 @@ acculé. Ce sont des nageurs et des chasseurs talentueux.*
 
 |                  |                                        |
 | ---------------- | -------------------------------------- |
-| Armour Class     | 3 \[16\] (9 \[10\] sous forme humaine) |
-| Hit Dice         | 5\* (22 pv)                            |
-| Attacks          | 2 × griffes (1d6), 1 × morsure (2d6)   |
-| THAC0            | 15 \[+4\]                              |
-| Movement         | 45 m (15 m)                            |
-| Saving Throws    | MP 10 B 11 PP 12 S 13 SSB 14 (5)       |
-| Morale           | 9                                      |
-| Alignment        | Neutre                                 |
+| Classe d'armure | 3 \[16\] (9 \[10\] sous forme humaine) |
+| Dés de vie     | 5\* (22 pv)                            |
+| Attaques       | 2 × griffes (1d6), 1 × morsure (2d6)   |
+| TAC0             | 15 \[+4\]                              |
+| Déplacement     | 45 m (15 m)                            |
+| Jets de sauvegarde | MP 10 B 11 PP 12 S 13 SSB 14 (5)       |
+| Moral            | 9                                      |
+| Alignement       | Neutre                                 |
 | XP               | 300                                    |
-| Number Appearing | 1d4 (1d4)                              |
-| Treasure Type    | C                                      |
+| Nombre apparaissant| 1d4 (1d4)                              |
+| Type de trésor    | C                                      |
 
 -----
 

@@ -22,5 +22,5 @@ nuit en quête de nourriture.*
 
 -----
 
-  - *' Territorial :*' Se comportent d’abord de manière menaçante, et si
+  - ** Territorial :** Se comportent d’abord de manière menaçante, et si
     cela ne suffit pas, de manière violente pour protéger leur repaire.

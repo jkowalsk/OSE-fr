@@ -1,4 +1,4 @@
-# Lumière éternelle (Ténèbres éternelles) (C)
+# Lumière éternelle (Ténèbres éternelles)
 
 
 *[Sorts de clerc](../Sorts_de_clerc.md) 3e Niveau*
@@ -20,7 +20,7 @@ Ce sort à trois usages :
 3.  **Annuler les ténèbres :** Lumière éternelle annule le sort ténèbres
     éternelles (voir ci-dessous).
 
-## Inversé : Ténèbres éternelles
+**Inversé : Ténèbres éternelles**
 
 Crée une zone de ténèbres magiques dans un rayon de 9 m, empêchant à la
 fois la vision normale et l’infravision. Les sources de lumière à

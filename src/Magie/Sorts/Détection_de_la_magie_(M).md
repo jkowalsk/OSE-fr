@@ -1,4 +1,4 @@
-# Détection de la magie (M)
+# Détection de la magie
 
 
 *[Sorts de magicien](../Sorts_de_magicien.md) 1er Niveau*

@@ -1,0 +1,33 @@
+\documentclass[a4paper, twocolumn]{article}
+
+\input{include/libs.tex}
+\input{include/colors.tex}
+\input{include/tikzcards.tex}
+\input{include/spell_cards.tex}
+
+\begin{document}
+\pagestyle{empty}
+
+\usemage
+%\input{liste/mage/Métempsycose.tex}
+\input{liste/all_mage_spells.tex}
+
+\printback\printback
+\printback\printback
+\printback\printback
+
+\usecleric
+\input{liste/all_cleric_spells.tex}%
+
+\printback\printback
+\printback\printback
+\printback\printback
+\printback\printback
+
+%% fix align
+%\input{liste/clerc/Anéantissement_de_la_peur_(Peur).tex}
+%\input{liste/clerc/Aquagenèse.tex}
+%\input{liste/clerc/Bâtons_à_serpents.tex}
+%\input{liste/clerc/Bénédiction_(Malédiction).tex}
+
+\end{document}

@@ -1,4 +1,4 @@
-# Paralysie (C)
+# Paralysie
 
 
 *[Sorts de clerc](../Sorts_de_clerc.md) 2e Niveau*

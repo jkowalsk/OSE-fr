@@ -36,11 +36,10 @@ formidable et périlleux.
     fou à la suite du lien, le temps de récupération correspond à un
     nombre de semaines égal au numéro du plan contacté.
 
-#### Question pour Contact des plans supérieurs
+Question pour Contact des plans supérieurs
 
-|          |          |                 |            |           |
-| -------- | -------- | --------------- | ---------- | --------- |
 | *'Plane* | **\# Q** | **Ne sait pas** | **Vérité** | **Folie** |
+| -------- | -------- | --------------- | ---------- | --------- |
 | 3e       | 3        | 75%             | 50%        | 5%        |
 | 4e       | 4        | 70%             | 55%        | 10%       |
 | 5e       | 5        | 65%             | 60%        | 15%       |

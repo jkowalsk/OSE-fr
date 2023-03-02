@@ -1,0 +1,155 @@
+%   COMMANDS ZUM ZUSAMMENBAUEN DER KARTEN
+%   ---------------------------------------
+
+%   TikZ/PGF Settings für die Karten
+\pgfmathsetmacro{\cardwidth}{7.5}
+\pgfmathsetmacro{\cardheight}{8.88}
+\pgfmathsetmacro{\imagewidth}{7.35}
+\pgfmathsetmacro{\imageheight}{8.73}
+\pgfmathsetmacro{\stripwidth}{0.9}
+\pgfmathsetmacro{\strippadding}{0.2}
+\pgfmathsetmacro{\textpadding}{0.1}
+\pgfmathsetmacro{\titley}{\cardheight-\strippadding-2*\textpadding}
+\pgfmathsetmacro{\techy}{\cardheight-\strippadding-5*\textpadding}
+\pgfmathsetmacro{\titleheight}{\cardheight-\strippadding-1}
+
+%   Formen der einzelnen Kartenelemente/-bestandteile
+\def\shapeCard{(0,0) rectangle (\cardwidth,\cardheight)}
+\def\shapeLeftStripLong{(\strippadding,-0.2) rectangle (\strippadding+\stripwidth,\cardheight-\strippadding-\strippadding-1)}
+\def\shapeLeftStripShort{(\strippadding,\cardheight-\strippadding-1) rectangle (\strippadding+\stripwidth,\cardheight+0.2)}
+\def\shapeRightStripShort{(\cardwidth-\stripwidth-\strippadding,\titleheight) rectangle (\cardwidth-\strippadding,\cardheight+0.2)}
+\def\shapeTitleArea{(2*\strippadding+\stripwidth,\cardheight-\strippadding) rectangle (\cardwidth-2*\strippadding-\stripwidth,\titleheight)}
+\def\shapeContentArea{(2*\strippadding+\stripwidth,0.5*\cardheight) rectangle (\cardwidth+0.2,-0.2)}
+
+
+%   Stylings für die Elemente definieren
+\tikzset{
+  %   runde Ecken für die Karten
+  cardcorners/.style={
+      rounded corners=0.2cm
+    },
+  %   runde Ecken für die "Fähnchen"
+  elementcorners/.style={
+      rounded corners=0.1cm
+    },
+  %   Schlagschatten für die "Fähnchen"
+  stripshadow/.style={
+      drop shadow={
+          opacity=.25,          
+          color=black
+        }
+    },
+  %   Style für die "Fähnchen"
+  strip/.style={
+      elementcorners,
+      stripshadow
+    },
+  %   Bild für das Kartenmotiv
+  cardimage/.style={
+      path picture={
+	      \fill[elementcorners,black] \shapeCard;
+          \node at (0.5*\cardwidth,0.5*\cardheight) {
+            \includegraphics[width=\imagewidth cm, height=\imageheight cm]{#1}
+          };
+        }
+    },
+}
+
+%   TikZ-Raster
+\newcommand{\carddebug}{
+  \draw [step=1,help lines] (0,0) grid (\cardwidth,\cardheight);
+}
+
+%   Rahmen der Karte
+\newcommand{\cardborder}{
+  \draw[lightgray,cardcorners] \shapeCard;
+}
+
+%   Hintergrund der Karte
+\newcommand{\cardbackground}[1]{
+  \draw[cardcorners, cardimage=#1] \shapeCard;
+}
+
+%   Kategorie der Karte
+\newcommand{\cardtype}[3]{
+  %   First we fill the intersecting area
+  %   The \clip command does not allow options, therefore 
+  %   we have to use a scope to set the even odd rule.
+  \begin{scope}[even odd rule]
+    %   Define a clipping path. All paths outside shapeCard will
+    %   be cut because the even odd rule is set.
+    \clip[cardcorners] \shapeCard;
+    % Fill shapeLeftStripLong and shapeLeftStripShort.
+    %   Since the even odd rule is set, only the card will be filled.
+    \fill[strip, #1] \shapeLeftStripLong node[rotate=90,above left=0.9mm,font=\Large\scshape] {    	
+       \color{white}#2
+    };
+    \fill[strip,#1] \shapeLeftStripShort;
+  \end{scope}
+
+  \node at (\strippadding+\stripwidth-0.28,\cardheight-\strippadding-\strippadding-0.37) {\color{white}#3};
+}
+\newcommand{\cardtypeCharacter}{\cardtype{characterbg}{Charaktereigenschaft}{\hspace{-1mm}\LARGE\lefthand}}
+\newcommand{\cardtypeAbility}{\cardtype{abilitybg}{Fähigkeit}{\hspace{-1mm}\Large\floweroneright}}
+\newcommand{\cardtypeItem}{\cardtype{itembg}{Gegenstand}{\hspace{-1mm}\LARGE\bomb}}
+\newcommand{\cardtypeTest}{\cardtype{testbg}{Testkarte}{\hspace{-1.4mm}\huge\ding{78}}}
+
+%   Titel der Karte
+\newcommand{\cardtitle}[1]{
+	%\fill[elementcorners,titlebg,opacity=.85] \shapeTitleArea;
+	\node[text width=4.75cm] at (0.5*\cardwidth,\titley) {
+		\begin{center}
+		{\normalfont\scshape\large\bfseries\color{maincolor!60 !black}#1}
+		\end{center}
+	};
+}
+
+\newcommand{\leftpunsh} {
+	\node[circle, draw] at (2*\strippadding, \cardheight-2*\strippadding) {};
+}
+
+\newcommand{\rightpunsh} {
+	\node[circle, draw] at (\cardwidth-2*\strippadding, \cardheight-2*\strippadding) {};
+}
+
+\newcommand{\cardtech}[2]{
+	\node[text width=4.75cm, fill=black, opacity=0.33, text opacity=1, elementcorners] at (0.5*\cardwidth,\techy) {
+		\small
+		\begin{itemize}
+			\item \textbf{Durée :} #1
+			\item \textbf{Portée :} #2
+		\end{itemize}
+	};
+}
+
+%   Inhalt der Karte
+\newcommand{\cardcontent}[1]{
+  \begin{scope}[even odd rule]
+    \clip[cardcorners] \shapeCard;
+    %\fill[elementcorners,contentbg] \shapeContentArea;
+  \end{scope}
+  \node[text width=(\cardwidth-4*\textpadding-1)*1cm] at (0.5*\cardwidth+0.5,0.5*\cardheight-5*\textpadding) {
+  	\parbox[c][6.88cm][c]{6cm}{
+	    \tiny #1 
+    }
+  };
+%  \node[below right, text width=(\cardwidth-2*\strippadding-\stripwidth-2*\textpadding-0.3)*1cm] at (2*\strippadding+\stripwidth+\textpadding,3) {
+%    \vrule width \textwidth height 2pt \\[-2pt]
+%    \vspace{0.2cm}
+%    {\scriptsize #1}
+%  };
+}
+
+%   Preis der Karte
+\newcommand{\cardlevel}[1]{
+  \begin{scope}[even odd rule]
+    \clip[cardcorners] \shapeCard;
+    \fill[strip,\levelBgColor{#1}] \shapeRightStripShort;
+  \end{scope}
+  \node at (\cardwidth-0.5*\stripwidth-\strippadding,\titley) {\bfseries\scriptsize\levelFgColor{#1}Niveau};
+  \node at (\cardwidth-0.5*\stripwidth-\strippadding,\titley-0.3) {\bfseries\levelFgColor{#1}#1};
+}
+
+\newcommand{\cardtypeback}{
+	\node at (0.5*\cardwidth,0.5*\cardheight) {\resizebox{3cm}{!}{\color{\titlecolor}\classicon} };
+}

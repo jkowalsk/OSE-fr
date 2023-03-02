@@ -11,7 +11,7 @@ Ce sort transforme la pierre en chair vivante. Il est particulièrement
 utile pour redonner vie à une créature pétrifiée et rendre à son
 équipement son état normal.
 
-## Inversé : Transmutation de chair en pierre
+**Inversé : Transmutation de chair en pierre**
 
 Transforme une créature en statue, y compris tout l'équipement et tous
 les objets qu’elle porte actuellement. Un jet de sauvegarde contre la

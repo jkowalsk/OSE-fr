@@ -64,7 +64,7 @@ se nourrissant uniquement d’herbe, partout où elle est disponible.*
 -----
 
   - **Domestique :** On ne le rencontre pas dans la nature sauvage.
-  - *'Bête de somme :* Peut transporter jusqu’à 3 000 pièces en charge
+  - **Bête de somme :** Peut transporter jusqu’à 3 000 pièces en charge
     normale et jusqu’à 6 000 pièces surchargé et à la moitié de sa
     vitesse.
 
@@ -79,7 +79,7 @@ véhicules et des charrues ou comme bête de somme.*
 | ------------------- | -------------------------------- |
 | Classe d'armure     | 7 \[12\]                         |
 | Dés de vie          | 3 (13 pv)                        |
-| Attaques            | Aucune                           |
+| Attaques            | Aucune (-)                       |
 | TAC0                | 17 \[+2\]                        |
 | Déplacement         | 27 m (9 m)                       |
 | Jets de sauvegarde  | MP 12 B 13 PP 14 S 15 SSB 16 (2) |
