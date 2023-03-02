@@ -1,4 +1,4 @@
-name: latex compile
+name: OSE CI
 
 on:
   push:
@@ -7,10 +7,24 @@ on:
   pull_request:
 
 jobs:
+  build_mdbook:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Build mdBook
+        uses: peaceiris/actions-mdbook@v1
+        with:
+          mdbook-version: "latest"
+      - run: mdbook build
+      - name: Upload mdbook
+        uses: actions/upload-artifact@v3
+        with:
+          name: OSE-fr
+          path: |
+            book/
+            README.md
   build_latex:
     runs-on: ubuntu-latest
-    concurrency:
-      group: ${{ github.workflow }}-${{ github.ref }}
     steps:
       - name: Set up Git repository
         uses: actions/checkout@v3
@@ -34,9 +48,43 @@ jobs:
           cp manuel_monstres-latex/monster_manual.pdf book
           cp manuel_monstres-latex/monster_cards.pdf book
           cp spell_latex/spell_card.pdf book
-      - name: Deploy tex
-        uses: peaceiris/actions-gh-pages@v3
-        if: ${{ github.ref == 'refs/heads/main' }}
+      - name: Upload PDF
+        uses: actions/upload-artifact@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./book
+          name: OSE-pdf
+          path: |
+            book/
+            README.md
+  make_page_artifact:
+    needs: [build_mdbook, build_latex]
+    runs-on: ubuntu-latest
+    steps:
+    - name: Download mdbook
+      uses: actions/download-artifact@v3
+      with:
+          name: OSE-fr
+    - name: Download pdf
+      uses: actions/download-artifact@v3
+      with:
+          name: OSE-pdf
+    - name: Upload a Build Artifact
+      uses: actions/upload-pages-artifact@v1
+      with:
+        path: book
+  deploy:
+    # Add a dependency to the build job
+    needs: make_page_artifact
+    # Grant GITHUB_TOKEN the permissions required to make a Pages deployment
+    permissions:
+      pages: write      # to deploy to Pages
+      id-token: write   # to verify the deployment originates from an appropriate source
+    # Deploy to the github-pages environment
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    # Specify runner + deployment step
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v1
