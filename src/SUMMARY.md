@@ -52,7 +52,7 @@
   * [Rencontres](Aventure/Rencontres.md)
   * [Fuite et poursuite](Aventure/Fuite_et_poursuite.md)
   * [Combat](Aventure/Combat.md)
-    * [Combat : autres détails](Aventure/Combat_:_autres_détails.md)
+    * [Combat : autres détails](Aventure/Combat_autres_détails.md)
     * [Moral (règle optionnelle)](Aventure/Moral_(règle_optionnelle).md)
     * [Tableaux de combat](Aventure/Tableaux_de_combat.md)
 
