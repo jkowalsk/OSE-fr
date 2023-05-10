@@ -15,7 +15,7 @@ compris entre 3 (le plus mauvais score possible) et 18 (le meilleur).
 ## Classe
 
 Il s’agit de la profession d’un aventurier. La classe d’un personnage
-définit ses capacités principales. Voir ***Classes***.
+définit ses capacités principales. Voir [Classes](Classes/README.md).
 
 ## Race
 
