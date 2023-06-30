@@ -35,7 +35,7 @@
   %   Schlagschatten für die "Fähnchen"
   stripshadow/.style={
       drop shadow={
-          opacity=.25,          
+          opacity=.25,
           color=black
         }
     },
@@ -73,7 +73,7 @@
 %   Kategorie der Karte
 \newcommand{\cardtype}[3]{
   %   First we fill the intersecting area
-  %   The \clip command does not allow options, therefore 
+  %   The \clip command does not allow options, therefore
   %   we have to use a scope to set the even odd rule.
   \begin{scope}[even odd rule]
     %   Define a clipping path. All paths outside shapeCard will
@@ -81,7 +81,7 @@
     \clip[cardcorners] \shapeCard;
     % Fill shapeLeftStripLong and shapeLeftStripShort.
     %   Since the even odd rule is set, only the card will be filled.
-    \fill[strip, #1] \shapeLeftStripLong node[rotate=90,above left=0.9mm,font=\Large\scshape] {    	
+    \fill[strip, #1] \shapeLeftStripLong node[rotate=90,above left=0.9mm,font=\Large\scshape] {
        \color{white}#2
     };
     \fill[strip,#1] \shapeLeftStripShort;
@@ -129,9 +129,12 @@
     %\fill[elementcorners,contentbg] \shapeContentArea;
   \end{scope}
   \node[text width=(\cardwidth-4*\textpadding-1)*1cm] at (0.5*\cardwidth+0.5,0.5*\cardheight-5*\textpadding) {
-  	\parbox[c][6.88cm][c]{6cm}{
-	    \tiny #1 
-    }
+      \begin{fitbox}{6.1cm}{6.5cm}%
+           #1%
+      \end{fitbox}%
+  	%\parbox[c][6.88cm][c]{6cm}{
+	%    \tiny #1
+    %}
   };
 %  \node[below right, text width=(\cardwidth-2*\strippadding-\stripwidth-2*\textpadding-0.3)*1cm] at (2*\strippadding+\stripwidth+\textpadding,3) {
 %    \vrule width \textwidth height 2pt \\[-2pt]
