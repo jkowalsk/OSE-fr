@@ -50,6 +50,4 @@ compris un coffret \!) sur [necroticgnome.com](https://necroticgnome.com).
 ## Production indépendante
 Vous trouverez également quelques aides générées à partir du contenu de ce SRD :
 
-- Un manuel des monstres  : [monster_manual.pdf](monster_manual.pdf)
-- Des cartes de monstre : [monster_cards.pdf](monster_cards.pdf)
 - Des cartes de sort : [spell_card.pdf](spell_card.pdf)

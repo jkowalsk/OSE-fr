@@ -1,0 +1,103 @@
+\documentclass[a4paper, twocolumn]{article}
+\usepackage{environ}% http://ctan.org/pkg/environ
+
+\input{include/libs.tex}
+\input{include/colors.tex}
+\input{include/tikzcards.tex}
+\input{include/spell_cards.tex}
+
+\newdimen\fontdim
+\newdimen\upperfontdim
+\newdimen\lowerfontdim
+\newif\ifmoreiterations
+\fontdim12pt
+
+\makeatletter
+\NewEnviron{fitbox}[2]{% \begin{fitbox}{<width>}{<height>} stuff \end{fitbox}
+    \def\buildbox{%
+        \setbox0\vbox{\hbox{\minipage{#1}%
+                \fontsize{\fontdim}{1.2\fontdim}%
+                \selectfont%
+                \stuff%
+                \endminipage}}%
+        \dimen@\ht0
+        \advance\dimen@\dp0
+    }
+    \def\stuff{\BODY}% Store environment body
+    \buildbox
+    % Compute upper and lower bounds
+    \ifdim\dimen@>#2
+    \loop
+    \fontdim.5\fontdim % Reduce font size by half
+    \buildbox
+    \ifdim\dimen@>#2 \repeat
+    \lowerfontdim\fontdim
+    \upperfontdim2\fontdim
+    \fontdim1.5\fontdim
+    \else
+    \loop
+    \fontdim2\fontdim % Double font size
+    \buildbox
+    \ifdim\dimen@<#2 \repeat
+    \upperfontdim\fontdim
+    \lowerfontdim.5\fontdim
+    \fontdim.75\fontdim
+    \fi
+    % Now try to find the optimum size
+    \loop
+    %\message{Bounds: \the\lowerfontdim\space
+        %         \the\fontdim\space \the\upperfontdim^^J}
+    \buildbox
+    \ifdim\dimen@>#2
+    \moreiterationstrue
+    \upperfontdim\fontdim
+    \advance\fontdim\lowerfontdim
+    \fontdim.5\fontdim
+    \else
+    \advance\dimen@-#2
+    \ifdim\dimen@<10pt
+    \lowerfontdim\fontdim
+    \advance\fontdim\upperfontdim
+    \fontdim.5\fontdim
+    \dimen@\upperfontdim
+    \advance\dimen@-\lowerfontdim
+    \ifdim\dimen@<.2pt
+    \moreiterationsfalse
+    \else
+    \moreiterationstrue
+    \fi
+    \else
+    \moreiterationsfalse
+    \fi
+    \fi
+    \ifmoreiterations \repeat
+    \box0% Typeset content
+}
+\makeatother
+
+\begin{document}
+\pagestyle{empty}
+
+\usemage
+%\input{liste/mage/Métempsycose.tex}
+\input{liste/all_mage_spells.tex}
+
+\printback\printback
+\printback\printback
+\printback\printback
+
+\usecleric
+\input{liste/all_cleric_spells.tex}%
+
+\printback\printback
+\printback\printback
+\printback\printback
+
+%% fix align
+\printback
+%\input{liste/clerc/Anéantissement_de_la_peur_(Peur).tex}
+%\input{liste/clerc/Aquagenèse.tex}
+%\input{liste/clerc/Bâtons_à_serpents.tex}
+%\input{liste/clerc/Bénédiction_(Malédiction).tex}
+
+\end{document}
