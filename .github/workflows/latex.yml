@@ -10,14 +10,14 @@ jobs:
   build_mdbook:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Build mdBook
-        uses: peaceiris/actions-mdbook@v1
+        uses: peaceiris/actions-mdbook@v2
         with:
-          mdbook-version: "latest"
-      - run: mdbook build
+          mdbook-version: "0.4.32"
+      - run: sh tools/ci/build-mdbook.sh 
       - name: Upload mdbook
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: OSE-fr
           path: |
@@ -27,29 +27,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Set up Git repository
-        uses: actions/checkout@v3
-      - name: Compile Monster Manual
-        uses: xu-cheng/latex-action@v2
-        with:
-          root_file: monster_manual.tex
-          working_directory: manuel_monstres-latex/
-      - name: Compile Monster Cards
-        uses: xu-cheng/latex-action@v2
-        with:
-          root_file: monster_cards.tex
-          working_directory: manuel_monstres-latex/
+        uses: actions/checkout@v4
       - name: Compile Spell Cards
-        uses: xu-cheng/latex-action@v2
+        uses: xu-cheng/latex-action@v3
         with:
+          args: -file-line-error -halt-on-error -interaction=nonstopmode
           root_file: spell_card.tex
-          working_directory: spell_latex/
+          working_directory: Aides/cartes-sorts/
+          work_in_root_file_dir: true
       - run: |
           mkdir -p book
-          cp manuel_monstres-latex/monster_manual.pdf book
-          cp manuel_monstres-latex/monster_cards.pdf book
-          cp spell_latex/spell_card.pdf book
+          cp Aides/cartes-sorts/build/spell_card.pdf book
       - name: Upload PDF
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: OSE-pdf
           path: |
@@ -60,20 +50,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Download mdbook
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@v4
       with:
           name: OSE-fr
     - name: Download pdf
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@v4
       with:
           name: OSE-pdf
     - name: Upload a Build Artifact
-      uses: actions/upload-pages-artifact@v1
+      uses: actions/upload-pages-artifact@v3
       with:
         path: book
   deploy:
     # Add a dependency to the build job
     needs: make_page_artifact
+    if: github.ref == 'refs/heads/master'
     # Grant GITHUB_TOKEN the permissions required to make a Pages deployment
     permissions:
       pages: write      # to deploy to Pages
@@ -87,4 +78,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v1
+        uses: actions/deploy-pages@v4

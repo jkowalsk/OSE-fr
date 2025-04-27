@@ -1,0 +1,75 @@
+%\RequirePackage{xinttools}
+\makeatletter
+
+\global\@namedef{spellcarac@list}{}
+
+\newcommand{\resetcaraclist}{
+	\xintFor* ##1 in \spellcarac@list\do {
+		\global\@namedef{##1}{}
+	}
+	\global\@namedef{spellcarac@list}{}
+}
+
+\newcommand{\spellcarac}[2]{
+	\global\@namedef{#1}{#2}
+	\g@addto@macro\spellcarac@list{{#1}}
+}
+
+\definecolor{magebg}{RGB}{0,100,200}
+\definecolor{clericbg}{named}{LimeGreen}
+
+\def\titlecolor{magebg}
+\def\titleshape{\hspace{-1mm}\LARGE\lefthand}
+\def\backimg{parchemin_color.png}
+\def\classicon{\faHatWizard}
+
+\newcommand{\setcardtitle}[1]{\cardtype{\titlecolor}{#1}{\titleshape}}
+
+\newcommand{\usemage}{
+	\def\titlecolor{magebg}
+	\def\classicon{\faHatWizard}
+}
+
+\newcommand{\usecleric}{
+	\def\titlecolor{clericbg}
+	\def\classicon{\faPrayingHands}
+}
+
+\newcommand{\printspell}{
+	\begin{tikzpicture}
+		\cardborder
+		\cardbackground{\backimg}
+		\cardtype{\titlecolor}{\@nameuse{name}}{\hspace{-2mm}\LARGE\classicon}
+		\leftpunsh
+		\cardlevel{\@nameuse{level}}
+		%\cardtitle{\@nameuse{name}}
+		\cardtech{\@nameuse{duree}}{\@nameuse{portee}}
+		\cardcontent{\@nameuse{description}}
+	\end{tikzpicture}
+}
+
+\newcommand{\printback}{
+	\begin{center}
+	\begin{tikzpicture}
+		\cardborder
+		\cardbackground{\backimg}
+		\rightpunsh
+		\cardtypeback
+	\end{tikzpicture}
+	\end{center}
+}
+
+\newenvironment{spell}{
+	\resetcaraclist%
+	\begin{center}
+}{
+	\printspell%
+	\end{center}
+	\resetcaraclist%
+}
+
+\renewcommand\tableofcontents{%
+	\@starttoc{toc}%
+}
+
+\makeatother

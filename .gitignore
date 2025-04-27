@@ -1,4 +1,5 @@
-book/
+**/book/
+**/build/
 manuel_monstres-latex/img/
 
 ## Core latex/pdflatex auxiliary files:
