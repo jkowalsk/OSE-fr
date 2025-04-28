@@ -9,6 +9,12 @@ function get_description() {
         spell_card)
         desc="Cartes de sort pour Mage and Clerc, à imprimer"
         ;;
+        livre_clerc)
+        desc="Règles spéciﬁques au clerc et listes de sort"
+        ;;
+        livre_mage)
+        desc="Règles spéciﬁques au magicien et listes de sort"
+        ;;
         *)
         desc=""
         ;;
@@ -28,9 +34,9 @@ function gen_category_md() {
     for file in *.pdf; do
     if [ -f "$file" ]; then
         filebase=${file%.pdf}
-        magick $file[0] -resize 20% "$OUT_MD_PATH/${filebase}.png"  >/dev/null
+        magick $file[0] -resize 20% -flatten -frame 1x1 "$OUT_MD_PATH/${filebase}.png"  >/dev/null
         description=$(get_description ${filebase})
-        echo "| [![$filebase.pdf]($filebase.png)]($filebase.pdf) |  $description  |"  >> "$OUT_MD_FILE"
+        echo "| [![$filebase.png]($filebase.png)]($filebase.pdf) |  $description  |"  >> "$OUT_MD_FILE"
     fi
     done
     popd >/dev/null
