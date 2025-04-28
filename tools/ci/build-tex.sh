@@ -2,8 +2,9 @@
 set -e
 
 # go to repository root
-ROOT_DIR=`git rev-parse --show-toplevel`
-cd "$ROOT_DIR"
+SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+cd "$SCRIPT_DIR/../.."
+ROOT_DIR=`pwd`
 
 OUT_PDF_PATH="$ROOT_DIR/book/pdf"
 
