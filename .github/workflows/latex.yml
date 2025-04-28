@@ -21,6 +21,7 @@ jobs:
           name: OSE-pdf
           path: |
             book/
+            README.md
   build_mdbook:
     runs-on: ubuntu-latest
     steps:
