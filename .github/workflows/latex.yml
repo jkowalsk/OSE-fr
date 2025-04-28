@@ -7,6 +7,21 @@ on:
   pull_request:
 
 jobs:
+  build_latex:
+    runs-on: ubuntu-latest
+    container: ghcr.io/xu-cheng/texlive-full:latest
+    steps:
+      - name: Set up Git repository
+        uses: actions/checkout@v4
+      - name: Compile LaTeX documents
+        run: bash tools/ci/build-tex.sh
+      - name: Upload PDF
+        uses: actions/upload-artifact@v4
+        with:
+          name: OSE-pdf
+          path: |
+            book/
+            README.md
   build_mdbook:
     runs-on: ubuntu-latest
     steps:
@@ -20,28 +35,6 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: OSE-fr
-          path: |
-            book/
-            README.md
-  build_latex:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Set up Git repository
-        uses: actions/checkout@v4
-      - name: Compile Spell Cards
-        uses: xu-cheng/latex-action@v3
-        with:
-          args: -file-line-error -halt-on-error -interaction=nonstopmode
-          root_file: spell_card.tex
-          working_directory: Aides/cartes-sorts/
-          work_in_root_file_dir: true
-      - run: |
-          mkdir -p book
-          cp Aides/cartes-sorts/build/spell_card.pdf book
-      - name: Upload PDF
-        uses: actions/upload-artifact@v4
-        with:
-          name: OSE-pdf
           path: |
             book/
             README.md

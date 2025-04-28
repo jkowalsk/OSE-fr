@@ -1,0 +1,63 @@
+\documentclass{osr}
+\usepackage{xinttools}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Forma&t des sorts
+\makeatletter
+
+\global\@namedef{spellcarac@list}{}
+
+\newcommand{\resetcaraclist}{
+  \xintFor* ##1 in \spellcarac@list\do {
+    \global\@namedef{##1}{}
+  }
+  \global\@namedef{spellcarac@list}{}
+}
+
+\newcommand{\spellcarac}[2]{
+  \global\@namedef{#1}{#2}
+  \g@addto@macro\spellcarac@list{{#1}}
+}
+
+\newtcolorbox{spelldesc}[1][]{
+  ornamented,
+  title=#1
+}
+
+\newcommand{\printspell}{
+  \subsection{\@nameuse{name}}
+  \textbf{Durée~: \@nameuse{duree}} \hfill
+  \textbf{Portée~: \@nameuse{portee}}
+
+  \@nameuse{description}
+}
+
+\newenvironment{spell}{
+  \resetcaraclist%
+  }{
+  %\parbox{\columnwidth}{
+    \printspell
+  %}%
+
+  \resetcaraclist%
+}
+
+\makeatother
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\title{Livre du Clerc}
+\author{}
+\coverimage{img/pretre.jpg}
+\covercolor{DarkOliveGreen4}
+%\titlecolor{Orchid!50}
+\abstract{\centering Règles spécifiques au clerc et listes de sort}
+
+\begin{document}
+
+  \maketitle
+
+  \input{regles}
+  \input{sorts}
+
+\end{document}
