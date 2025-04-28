@@ -46,8 +46,3 @@ Aidez-vous des générateurs \! Ils vous fourniront :
 Le jeu complet Old-School Essentials est disponible sous forme de PDF
 magnifiquement illustrés et mis en page et de livres imprimés luxueux (y
 compris un coffret \!) sur [necroticgnome.com](https://necroticgnome.com).
-
-## Production indépendante
-Vous trouverez également quelques aides générées à partir du contenu de ce SRD :
-
-- Des cartes de sort : [spell_card.pdf](spell_card.pdf)
