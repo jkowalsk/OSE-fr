@@ -25,4 +25,5 @@ build_tex "Aides/cartes-sorts" aides
 build_tex "Aides/cleric-book" aides
 build_tex "Aides/mage-book" aides
 
+build_tex "Scenarii/Tomb-serpent-kings" scenarii
 

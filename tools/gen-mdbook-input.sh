@@ -15,6 +15,9 @@ function get_description() {
         livre_mage)
         desc="Règles spéciﬁques au magicien et listes de sort"
         ;;
+        Tombe_des_rois_serpents)
+        desc="**La Tombe des Rois Serpents** : Scénario \"tutoriel\" pour débutants. [source](https://coinsandscrolls.blogspot.com/2017/06/osr-tomb-of-serpent-kings-megapost.html)"
+        ;;
         *)
         desc=""
         ;;
