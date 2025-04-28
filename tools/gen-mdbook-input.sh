@@ -36,7 +36,7 @@ function gen_category_md() {
         filebase=${file%.pdf}
         magick $file[0] -resize 20% -flatten -frame 1x1 "$OUT_MD_PATH/${filebase}.png"  >/dev/null
         description=$(get_description ${filebase})
-        echo "| [![$filebase.png]($filebase.png)]($filebase.pdf) |  $description  |"  >> "$OUT_MD_FILE"
+        echo "| [![$filebase.png]($filebase.png)]($category/$filebase.pdf) |  $description  |"  >> "$OUT_MD_FILE"
     fi
     done
     popd >/dev/null
