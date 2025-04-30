@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 set -e
 
 ## run build-tex.sh then use this to generate mdbook input aides.md
@@ -43,32 +43,40 @@ function gen_category_md() {
     echo ""  >> "$OUT_MD_FILE"
     echo "## $category"  >> "$OUT_MD_FILE"
     echo ""  >> "$OUT_MD_FILE"
-    pushd "$dir" >/dev/null
+    cd "$dir"
     echo "| **Fichier**| **Description** |"  >> "$OUT_MD_FILE"
     echo "| --: | :-- |"  >> "$OUT_MD_FILE"
     for file in *.pdf; do
     if [ -f "$file" ]; then
         filebase=${file%.pdf}
-        magick $file[0] -resize 20% -flatten -frame 1x1 "$OUT_MD_PATH/${filebase}.png"  >/dev/null
+        $MAGICK $file[0] -resize 20% -flatten -frame 1x1 "$OUT_MD_PATH/${filebase}.png"  >/dev/null
+        echo "created $OUT_MD_PATH/${filebase}.png"
         description=$(get_description ${filebase})
         echo "| [![$filebase.png]($filebase.png)]($category/$filebase.pdf) |  $description  |"  >> "$OUT_MD_FILE"
     fi
     done
-    popd >/dev/null
+    cd "$ROOT_DIR"
 }
 
 # go to repository root
-ROOT_DIR=`git rev-parse --show-toplevel`
+SCRIPT_DIR=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
+cd "$SCRIPT_DIR/../.."
+ROOT_DIR=`pwd`
 cd "$ROOT_DIR"
+
+MAGICK=magick
+if ! command -v $MAGICK 2>&1 >/dev/null
+then
+    MAGICK=convert
+fi
 
 OUT_PDF_PATH="$ROOT_DIR/book/pdf"
 OUT_MD_PATH="$ROOT_DIR/SRD-md/src/pdf"
-OUT_MD_FILE="$OUT_MD_PATH/aides.md"
-
-echo "# Aide de jeu" > "$OUT_MD_FILE"
+OUT_MD_FILE="$OUT_MD_PATH/aides.inc.md"
 
 for dir in "$OUT_PDF_PATH"/*; do
     if [ -d "$dir" ]; then
         gen_category_md "$dir"
     fi
 done
+ echo "created $OUT_MD_FILE"
