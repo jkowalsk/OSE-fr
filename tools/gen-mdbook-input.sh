@@ -7,7 +7,7 @@ function get_description() {
     filebase=$1
     case $filebase in
         spell_card)
-        desc="Cartes de sort pour Mage and Clerc, à imprimer"
+        desc="Cartes de sort pour Mage and Clerc."
         ;;
         livre_clerc)
         desc="Règles spéciﬁques au clerc et listes de sort"
@@ -15,8 +15,20 @@ function get_description() {
         livre_mage)
         desc="Règles spéciﬁques au magicien et listes de sort"
         ;;
+        livre_clerc-book)
+        desc="Règles spéciﬁques au clerc et listes de sort. Livret imprimable"
+        ;;
+        livre_mage-book)
+        desc="Règles spéciﬁques au magicien et listes de sort. Livret imprimable"
+        ;;
         Tombe_des_rois_serpents)
         desc="**La Tombe des Rois Serpents** : Scénario \"tutoriel\" pour débutants. [source](https://coinsandscrolls.blogspot.com/2017/06/osr-tomb-of-serpent-kings-megapost.html)"
+        ;;
+        tdrs-book)
+        desc="**La Tombe des Rois Serpents** : Scénario, Livret imprimable. La description des monstres y est absente"
+        ;;
+        tdrs_monsters-book)
+        desc="**La Tombe des Rois Serpents** : Description des monstres. Livret imprimable"
         ;;
         *)
         desc=""
@@ -33,7 +45,7 @@ function gen_category_md() {
     echo ""  >> "$OUT_MD_FILE"
     pushd "$dir" >/dev/null
     echo "| **Fichier**| **Description** |"  >> "$OUT_MD_FILE"
-    echo "| -- | :-- |"  >> "$OUT_MD_FILE"
+    echo "| --: | :-- |"  >> "$OUT_MD_FILE"
     for file in *.pdf; do
     if [ -f "$file" ]; then
         filebase=${file%.pdf}
