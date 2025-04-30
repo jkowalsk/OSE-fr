@@ -21,9 +21,32 @@ build_tex() {
     echo "Leaving $DOC_PATH ..."
 }
 
+make_booklet() {
+    DOC_PATH=$1
+    filename=$2
+
+}
+
 build_tex "Aides/cartes-sorts" aides
 build_tex "Aides/cleric-book" aides
 build_tex "Aides/mage-book" aides
 
-build_tex "Scenarii/Tomb-serpent-kings" scenarii
+### create booklets
+pushd "$OUT_PDF_PATH/aides"
+pdfbook2 --paper=a4paper -n livre_clerc.pdf
+pdfbook2 --paper=a4paper -n livre_mage.pdf
+popd
 
+build_tex "Scenarii/Tomb-serpent-kings" scenarii
+### create booklets
+# first split document to have monster as self doc
+# find page 
+pushd "$OUT_PDF_PATH/scenarii"
+page=`pdfinfo -dests Tombe_des_rois_serpents.pdf | grep chapter.5 | awk '{print $1;}'`
+echo $page
+pdfjam Tombe_des_rois_serpents.pdf 1-20 -o tdrs.pdf
+pdfbook2 --paper=a4paper -n tdrs.pdf
+pdfjam Tombe_des_rois_serpents.pdf 21- -o tdrs_monsters.pdf
+pdfbook2 --paper=a4paper -n tdrs_monsters.pdf
+rm tdrs.pdf tdrs_monsters.pdf
+popd

@@ -4,4 +4,4 @@ set -e
 cd SRD-md
 mdbook build
 cd ..
-mv SRD-md/book .
+cp -r SRD-md/book/* ./book

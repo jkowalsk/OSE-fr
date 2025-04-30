@@ -1,6 +1,8 @@
 **/book/
 **/build/
 manuel_monstres-latex/img/
+SRD-md/src/pdf/*.png
+SRD-md/src/pdf/aides.inc.md
 
 ## Core latex/pdflatex auxiliary files:
 *.aux

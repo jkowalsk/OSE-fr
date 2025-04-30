@@ -7,15 +7,15 @@ on:
   pull_request:
 
 jobs:
-  build_latex:
+  build_tex:
     runs-on: ubuntu-latest
     container: ghcr.io/xu-cheng/texlive-full:latest
-    steps:
+    steps:      
       - name: Set up Git repository
         uses: actions/checkout@v4
       - name: Compile LaTeX documents
         run: bash tools/ci/build-tex.sh
-      - name: Upload PDF
+      - name: Upload pdf
         uses: actions/upload-artifact@v4
         with:
           name: OSE-pdf
@@ -23,14 +23,25 @@ jobs:
             book/
             README.md
   build_mdbook:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - name: Build mdBook
+      runs-on: ubuntu-latest
+      needs: [build_tex]
+      steps:
+      - name: Set up Git repository
+        uses: actions/checkout@v4
+      - name: Download pdf
+        uses: actions/download-artifact@v4
+        with:
+          name: OSE-pdf
+      - name: Setup mdBook
         uses: peaceiris/actions-mdbook@v2
         with:
           mdbook-version: "0.4.32"
-      - run: sh tools/ci/build-mdbook.sh 
+      - name: Build mdBook
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y imagemagick
+          bash tools/ci/gen-mdbook-input.sh
+          bash tools/ci/build-mdbook.sh
       - name: Upload mdbook
         uses: actions/upload-artifact@v4
         with:
@@ -39,17 +50,13 @@ jobs:
             book/
             README.md
   make_page_artifact:
-    needs: [build_mdbook, build_latex]
+    needs: [build_mdbook]
     runs-on: ubuntu-latest
     steps:
     - name: Download mdbook
       uses: actions/download-artifact@v4
       with:
           name: OSE-fr
-    - name: Download pdf
-      uses: actions/download-artifact@v4
-      with:
-          name: OSE-pdf
     - name: Upload a Build Artifact
       uses: actions/upload-pages-artifact@v3
       with:

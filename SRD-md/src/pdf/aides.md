@@ -1,15 +1,23 @@
 # Aide de jeu
 
-## aides
+{{#include aides.inc.md}}
 
-| **Fichier**| **Description** |
-| -- | :-- |
-| [![livre_clerc.png](livre_clerc.png)](aides/livre_clerc.pdf) |  Règles spéciﬁques au clerc et listes de sort  |
-| [![livre_mage.png](livre_mage.png)](aides/livre_mage.pdf) |  Règles spéciﬁques au magicien et listes de sort  |
-| [![spell_card.png](spell_card.png)](aides/spell_card.pdf) |  Cartes de sort pour Mage and Clerc, à imprimer  |
+## Credits
 
-## scenarii
+### aides
 
-| **Fichier**| **Description** |
-| -- | :-- |
-| [![Tombe_des_rois_serpents.png](Tombe_des_rois_serpents.png)](scenarii/Tombe_des_rois_serpents.pdf) |  **La Tombe des Rois Serpents** : Scénario "tutoriel" pour débutants. [source](https://coinsandscrolls.blogspot.com/2017/06/osr-tomb-of-serpent-kings-megapost.html)  |
+- Texte original de [necrotic gnome](https://necroticgnome.com/) sous licence OGL
+- Texte des aides adapté de la traduction française du SRD : [SRD VF](https://oldschoolessentials.necroticgnome.com/fr/srd/index.php/Main_Page)
+- Images générées avec des outils IA...
+
+### scénario
+
+#### Tomb of the Serpent Kings
+
+- Texte original par [SKERPLES](coinsandscrolls.blogspot.com); sous licence Creative Commons CC BY-NC-SA.
+- Texte français adapté de la traduction [La Tombe des Rois Serpents](https://www.whidou.fr/la-tombe-des-rois-serpents.html)
+- Illustrations :
+  - Celles du scénario par [SCRAP PRINCESS](monstermanualsewnfrompants.blogspot.com)
+  - Couverture générée par IA
+  - Celles des monstres : générées par IA, sauf les gobeling fongiques ([SCRAP PRINCESS](monstermanualsewnfrompants.blogspot.com))
+- Carte par JANON
