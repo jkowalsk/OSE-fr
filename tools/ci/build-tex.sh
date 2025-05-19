@@ -30,11 +30,13 @@ make_booklet() {
 build_tex "Aides/cartes-sorts" aides
 build_tex "Aides/cleric-book" aides
 build_tex "Aides/mage-book" aides
+build_tex "Aides/alt_character-gen" aides
 
 ### create booklets
 pushd "$OUT_PDF_PATH/aides"
 pdfbook2 --paper=a4paper -n livre_clerc.pdf
 pdfbook2 --paper=a4paper -n livre_mage.pdf
+pdfbook2 --paper=a4paper -n alt_character-gen.pdf
 popd
 
 build_tex "Scenarii/Tomb-serpent-kings" scenarii
