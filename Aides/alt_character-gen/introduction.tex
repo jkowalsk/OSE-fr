@@ -1,0 +1,67 @@
+\chapter{Introduction}
+
+La création de personnage pour Old School Essentials se fait traditionnellement de la manière suivante~:
+\begin{enumerate}
+  \item Tirez les caractéristiques
+  \item Choisissez une classe
+  \item Ajustez les caractéristiques
+  \item Notez les modificateurs des caractéristiques
+  \item Notez les valeurs d'attaque
+  \item Notez scores de sauvegarde et capacités de classe
+  \item Tirez vos points de vie
+  \item Choisissez l'alignement
+  \item Notez les langues connues
+  \item Achetez votre équipement
+  \item Notez votre Classe d'armure
+  \item Notez votre niveau et vos XP
+  \item Baptisez votre personnage
+\end{enumerate}
+
+Ce livret a pour objectif de remplacer les étapes 1 à 3 par une méthode inspîrée des playbooks du jeu \emph{Beyond the Wall and Other Adventures}\footnote{\url{https://www.flatlandgames.com/btw/}}.
+
+Cette approche doit permettre
+\begin{itemize}
+  \item De fournir un historique basique au personnage
+  \item D'assurer des valeurs caractéristiques qui correspondent à la classe choisie
+\end{itemize}
+
+\subsection{Création de personnages basée sur l'historique}
+Appliquez successivement les étapes suivantes~:
+\begin{enumerate}
+  \item Déterminez la valeur initiale des caractéristiques~:
+        Lancez 1D4+5 pour chacune d'entre elles.
+  \item Déterminez les étapes importantes de votre enfance.
+        Pour chacune des 3 tables du chapitre \nameref{chilhoud}~:
+        \begin{itemize}
+          \item Lancez le dé correspondant
+          \item Notez l'élément d'historique obtenu
+          \item Notez le bonus de caractéristique obtenu
+        \end{itemize}
+  \item Choisissez votre classe.
+%        Les valeurs de caractéristiques que vous avez obtenu à l'étape précédente peuvent orienter votre choix.
+  \item Déterminez les étapes importantes de votre formation.
+        Référez vous au chapitre correspondant à votre classe (\nameref{warrior}, \nameref{mage}, \nameref{cleric}, \nameref{thief}, \nameref{dwarf}, \nameref{elf} ou \nameref{halfling}).
+        Notez le bonus spécifique à chaque classe, puis,
+        pour chacune des 4 tables de la formation~:
+        \begin{itemize}
+          \item Lancez le dé correspondant
+          \item Notez l'élément d'historique obtenu
+          \item Notez le bonus de caractéristique obtenu
+        \end{itemize}
+        \textbf{Note~:} Si la somme des bonus pour une caractéristique dépasse 18, ignorez le bonus ou retirez sur la table.
+  \item Calculez vos valeurs de caractéristiques en ajoutant les bonus obtenus.
+  \item Notez l'équipement obtenu
+\end{enumerate}
+
+\ifmulticolEnd
+\section*{Notes de conception}
+La méthode traditionnelle distribue toutes les caractériques de la même manière, sur une distribution en cloche centrée autour de la valeur 10,5.
+
+La méthode proposée permet de favoriser selon la classe une caractéristique principale et deux secondaires.
+
+\begin{osrtable}{XXXXXXXXX}{1}
+Caractéristique  & Guerrier   & Mage     & Clerc    & Voleur   & Nain     & Elfe     & Halfelin & Moyenne \\
+Principale       &  FOR       & INT      & SAG      & DEX      & CON      & INT      & DEX      & 13.15          \\
+Secondaire       &  CON; DEX  & DEX; SAG & CON; CHA & INT; CHA & FOR; SAG & DEX; SAG & CON; SAG & 12.15          \\
+Autres           &            &          &          &          &          &          &          & 10.15 \\
+\end{osrtable}
