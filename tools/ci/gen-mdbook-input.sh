@@ -21,6 +21,9 @@ function get_description() {
         livre_mage-book)
         desc="Règles spéciﬁques au magicien et listes de sort. Livret imprimable"
         ;;
+        alt_character-gen)
+        desc="Méthode alternative de création de personnage, sur le modèle des playbooks de [Beyond the Wall](https://www.flatlandgames.com/btw/)"
+        ;;
         Tombe_des_rois_serpents)
         desc="**La Tombe des Rois Serpents** : Scénario \"tutoriel\" pour débutants. [source](https://coinsandscrolls.blogspot.com/2017/06/osr-tomb-of-serpent-kings-megapost.html)"
         ;;
