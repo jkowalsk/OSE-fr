@@ -53,7 +53,8 @@ UprightFont    = butchsundanceplat,
 \let\titlefont\ButchSundancePlat
 \let\chapterfont\ButchSundanceExp
 \let\sectionfont\ButchSundanceExp
-
+\let\titlefont\ButchSundancePlat
+\let\partfont\ButchSundancePlat
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% COLORS
@@ -119,8 +120,8 @@ UprightFont    = butchsundanceplat,
 \RequirePackage{tikz}
 \usetikzlibrary{calc, positioning}
 \RequirePackage[export]{adjustbox}
-\RequirePackage{multicol}
 \RequirePackage{etoolbox}
+\RequirePackage{multicol}
 
 \newcommand{\ifmulticolEnd}{%
   \def\test{multicols}%
@@ -214,6 +215,19 @@ UprightFont    = butchsundanceplat,
 \titlespacing\subsection{0pt}{*2}{*0}
 \titlespacing\subsubsection{0pt}{5pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
 \titlespacing\paragraph{0pt}{2pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}[0pt plus 2pt minus 2pt]
+
+\titleformat{\part}[block]%
+{\color{secondarycolor}\titlerule[3pt]\filcenter\color{primarycolor}\partfont\fontsize{60pt}{70pt}\selectfont}% format
+{}% label
+{0pt}% sep
+{#1}% before code
+[\vhrulefill]% after code
+
+\titlespacing{\part}
+{0pt}% left
+{10pt}% before sep
+{20pt}% after sep
+
 
 %% TOC formatting
 \RequirePackage{titletoc}
